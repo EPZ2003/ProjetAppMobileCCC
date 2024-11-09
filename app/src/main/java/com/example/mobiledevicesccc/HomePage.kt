@@ -13,10 +13,10 @@ class HomePage : AppCompatActivity() {
 
         val btnGoToWP = findViewById<Button>(R.id.goToWorkoutPlanning)
 
-        /*btnGoToWP.setOnClickListener {
-            la page Workout planing s'applera WorkoutPlaning'
-            val intent = Intent(this,WorkoutPlaning::class.java)
+        btnGoToWP.setOnClickListener {
+
+            val intent = Intent(this,WorkoutPlanning::class.java)
             startActivity(intent)
-        }*/
+        }
     }
 }
