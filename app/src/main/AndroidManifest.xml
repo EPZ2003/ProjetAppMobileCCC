@@ -19,7 +19,7 @@
             android:name=".WorkoutPlanning"
             android:exported="false" />
         <activity
-            android:name=".workout_planning"
+            android:name=".RoundInput"
             android:exported="false" />
         <activity
             android:name=".HomePage"

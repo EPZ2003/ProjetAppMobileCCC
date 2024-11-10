@@ -11,12 +11,18 @@ class HomePage : AppCompatActivity() {
 
         setContentView(R.layout.activity_homepage)
 
-        val btnGoToWP = findViewById<Button>(R.id.goToWorkoutPlanning)
-
+        val btnGoToWP = findViewById<Button>(R.id.unknown)
+        val feur = findViewById<Button>(R.id.test)
         btnGoToWP.setOnClickListener {
 
             val intent = Intent(this,WorkoutPlanning::class.java)
             startActivity(intent)
+        }
+
+        feur.setOnClickListener {
+
+            val far = Intent(this,RoundInput::class.java)
+            startActivity(far)
         }
     }
 }
