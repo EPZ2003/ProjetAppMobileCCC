@@ -13,6 +13,9 @@
         android:theme="@style/Theme.MobileDevicesCCC"
         tools:targetApi="31">
         <activity
+            android:name=".CurrentProgram"
+            android:exported="false" />
+        <activity
             android:name=".UpdateExercice"
             android:exported="false" />
         <activity
