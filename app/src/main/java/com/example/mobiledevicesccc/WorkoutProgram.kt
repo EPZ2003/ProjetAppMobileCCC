@@ -5,10 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 
 class WorkoutProgram : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
@@ -17,14 +14,30 @@ class WorkoutProgram : AppCompatActivity() {
 
         setContentView(R.layout.activity_workout_program)
 
-        val btnWPlanning = findViewById<Button>(R.id.btnWPlanning)
+
 
         //Change the value of txtchooseWP by the passing button
         val txtChooseWP = findViewById<TextView>(R.id.txtchooseWP)
         val receiverTxt = intent.getStringExtra("KeyBtn")
         txtChooseWP.text = receiverTxt
 
-        btnWPlanning.setOnClickListener {
+        //Button
+        val btnADD = findViewById<Button>(R.id.btnADD)
+        val btnWPHP = findViewById<Button>(R.id.btnWPHP)
+        val btnWPWP = findViewById<Button>(R.id.btnWPWP)
+
+        btnADD.setOnClickListener {
+
+            val intent = Intent(this,AddExercise::class.java)
+            intent.putExtra("KeyBtnToADD",receiverTxt)
+            startActivity(intent)
+
+        }
+        btnWPHP.setOnClickListener {
+            val intent = Intent(this,HomePage::class.java)
+            startActivity(intent)
+        }
+        btnWPWP.setOnClickListener {
             val intent = Intent(this,WorkoutPlanning::class.java)
             startActivity(intent)
         }
