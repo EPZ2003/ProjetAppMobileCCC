@@ -31,7 +31,9 @@ class WorkoutPlanning : AppCompatActivity() {
         }
         btn1.setOnClickListener {
             val intent = Intent(this, WorkoutProgram::class.java)
+
             //Change the value of the Saving to the page WorkoutProgram
+
             intent.putExtra("KeyBtn","1")
             startActivity(intent)
 

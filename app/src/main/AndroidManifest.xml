@@ -13,6 +13,24 @@
         android:theme="@style/Theme.MobileDevicesCCC"
         tools:targetApi="31">
         <activity
+            android:name=".AddExercise"
+            android:exported="false" />
+        <activity
+            android:name=".Workout"
+            android:exported="false" />
+        <activity
+            android:name=".Pause"
+            android:exported="false" />
+        <activity
+            android:name=".RestTime"
+            android:exported="false" />
+        <activity
+            android:name=".CurrentProgram"
+            android:exported="false" />
+        <activity
+            android:name=".UpdateExercice"
+            android:exported="false" />
+        <activity
             android:name=".WorkoutProgram"
             android:exported="false" />
         <activity
