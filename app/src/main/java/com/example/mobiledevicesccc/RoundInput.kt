@@ -15,27 +15,27 @@ class RoundInput : AppCompatActivity()
             setContentView(R.layout.activity_round_input)
 
             val btnGoToWP = findViewById<Button>(R.id.goToWorkoutPlanning)
-            //val btnGoToCP = findViewById<Button>(R.id.goToCurrentProgram)
-            //val btnGoToAE = findViewById<Button>(R.id.goToAddExercises)
+            val btnGoToCP = findViewById<Button>(R.id.goToCurrentProgram)
+            val btnGoToAE = findViewById<Button>(R.id.goToAddExercises)
 
             btnGoToWP.setOnClickListener {
 
                 val intent = Intent(this,WorkoutPlanning::class.java)
                 startActivity(intent)
             }
-/*
+
             btnGoToCP.setOnClickListener {
 
-                val intent = Intent(this,CurrentWorkout::class.java)
+                val intent = Intent(this,CurrentProgram::class.java)
                 startActivity(intent)
             }
 
             btnGoToWP.setOnClickListener {
 
-                val intent = Intent(this,AddExercises::class.java)
+                val intent = Intent(this,AddExercise::class.java)
                 startActivity(intent)
             }
 
- */
+
         }
     }
