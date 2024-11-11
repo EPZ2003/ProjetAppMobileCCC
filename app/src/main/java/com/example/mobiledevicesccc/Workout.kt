@@ -9,30 +9,24 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class RestTime : AppCompatActivity() {
+class Workout : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_rest_time)
+        setContentView(R.layout.activity_workout)
 
-        val btnRTP = findViewById<Button>(R.id.btnRTP)
-        val btnRTW = findViewById<Button>(R.id.btnRTW)
-        val btnRTHP = findViewById<Button>(R.id.btnRTHP)
+        val btnRestTimeW = findViewById<Button>(R.id.btnRestTimeW)
+        val btnWHP = findViewById<Button>(R.id.btnWHP)
 
-        btnRTP.setOnClickListener {
+        btnRestTimeW.setOnClickListener {
 
-            val intent = Intent(this,Pause::class.java)
+            val intent = Intent(this,RestTime::class.java)
             startActivity(intent)
         }
-        btnRTW.setOnClickListener {
+        btnWHP.setOnClickListener {
 
-            val intent = Intent(this,Workout::class.java)
-            startActivity(intent)
-        }
-        btnRTHP.setOnClickListener {
-
-            val intent = Intent(this,HomePage::class.java)
+            val intent = Intent(this,WorkoutPlanning::class.java)
             startActivity(intent)
         }
     }

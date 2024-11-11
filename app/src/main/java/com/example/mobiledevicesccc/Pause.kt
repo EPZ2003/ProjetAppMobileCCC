@@ -23,10 +23,9 @@ class Pause : AppCompatActivity() {
             startActivity(intent)
         }
         btnPW.setOnClickListener {
-            //TODO
-            /*Need Workout Page
-            val intent = Intent(this,WorkoutPlanning::class.java)
-            startActivity(intent*/
+
+            val intent = Intent(this,Workout::class.java)
+            startActivity(intent)
         }
         btnPHP.setOnClickListener {
             val intent = Intent(this,HomePage::class.java)
