@@ -6,13 +6,13 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 
-class RoundInput : AppCompatActivity()
+class RestTimeInput : AppCompatActivity()
     {
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
 
-            setContentView(R.layout.activity_round_input)
+            setContentView(R.layout.activity_rest_time_input)
 
             val btnGoToWP = findViewById<Button>(R.id.GoToWP)
             val btnGoToCP = findViewById<Button>(R.id.goToCurrentProgram)

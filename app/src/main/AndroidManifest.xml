@@ -40,6 +40,9 @@
             android:name=".RoundInput"
             android:exported="false" />
         <activity
+            android:name=".RestTimeInput"
+            android:exported="false" />
+        <activity
             android:name=".HomePage"
             android:exported="true">
             <intent-filter>

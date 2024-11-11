@@ -29,16 +29,15 @@ class AddExercise : AppCompatActivity() {
         val btnAEWP = findViewById<Button>(R.id.btnAEWP)
 
         btnRoudInput.setOnClickListener {
-            //TODO
-            //Need RoundInput page
-            /*val intent = Intent(this,WorkoutPlanning::class.java)
-            startActivity(intent)*/
+
+            val intent = Intent(this,RoundInput::class.java)
+            startActivity(intent)
         }
         btnRTI.setOnClickListener {
-            //TODO
-            //Need RestTime page
-            /*val intent = Intent(this,WorkoutPlanning::class.java)
-            startActivity(intent)*/
+
+
+            val intent = Intent(this,RestTimeInput::class.java)
+            startActivity(intent)
         }
         btnBack.setOnClickListener {
             val intent = Intent(this,WorkoutProgram::class.java)
