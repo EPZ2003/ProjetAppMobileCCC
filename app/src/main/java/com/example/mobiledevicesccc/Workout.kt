@@ -22,6 +22,8 @@ class Workout : AppCompatActivity() {
         btnRestTimeW.setOnClickListener {
 
             val intent = Intent(this,RestTime::class.java)
+            // Ajouter un extra pour indiquer que le timer doit être lancé
+            intent.putExtra("start_timer", true)
             startActivity(intent)
         }
         btnWHP.setOnClickListener {
