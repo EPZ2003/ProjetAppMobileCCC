@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+
 }
 
 android {
@@ -15,6 +16,14 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    composeOptions{
+        kotlinCompilerExtensionVersion = libs.versions.composeCompiler.get()
+    }
+
+    buildFeatures {
+        compose = true
     }
 
     buildTypes {
@@ -45,4 +54,11 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation(libs.compose.ui)
+    implementation(libs.compose.material3)
+    implementation(libs.compose.tooling)
+    implementation(libs.lifecycle.runtime)
+    implementation(libs.activity.compose)
+    implementation(libs.compose.viewbinding)
+    debugImplementation(libs.androidx.ui.tooling)
 }
