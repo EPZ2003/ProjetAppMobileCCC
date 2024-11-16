@@ -3,6 +3,7 @@ package com.example.mobiledevicesccc
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import androidx.activity.R
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -19,7 +20,7 @@ class Pause : AppCompatActivity() {
 
         btnPRT.setOnClickListener {
 
-            val intent = Intent(this,androidx.activity.R::class.java)
+            val intent = Intent(this, R::class.java)
             startActivity(intent)
         }
         btnPW.setOnClickListener {
