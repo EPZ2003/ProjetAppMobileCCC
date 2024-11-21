@@ -44,10 +44,12 @@ android {
 }
 
 dependencies {
+    implementation(libs.androidx.activity.compose)
     // Compose Dependencies
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.material)
     implementation(libs.androidx.compose.ui.tooling.preview)
+    implementation(libs.androidx.navigation.runtime.ktx)
     debugImplementation(libs.androidx.compose.ui.tooling)
 
     // Room Dependencies
