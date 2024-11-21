@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.dp
 
 //Go to page WP
 @Composable
-fun startNewActictivty(
+fun StartNewActictivty(
     context: Context,
     activityClass: Class<*>,
 
