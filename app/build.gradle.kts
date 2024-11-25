@@ -51,6 +51,7 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.navigation.runtime.ktx)
     debugImplementation(libs.androidx.compose.ui.tooling)
+    implementation(libs.compose.material3)
 
     // Room Dependencies
     implementation(libs.androidx.room.runtime)
