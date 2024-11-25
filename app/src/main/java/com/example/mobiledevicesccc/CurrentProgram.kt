@@ -1,6 +1,7 @@
 package com.example.mobiledevicesccc
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -13,6 +14,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.material3.*
 import androidx.compose.foundation.layout.*
+
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -30,13 +32,30 @@ class CurrentProgram : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        val origin = intent.getStringExtra("origin")
         setContent {
-            CurrentProgramScreen()
-        }
-    }
+            CurrentProgramScreen(onBackClick = {
+                when (origin) {
+                    "round_input" -> {
+                        val intent = Intent(this, RoundInput::class.java)
+                        startActivity(intent)
+                    }
+
+                    "rest_time_page" -> {
+                        val intent = Intent(this, HomePage::class.java)
+                        startActivity(intent)
+                    }
+
+                    else -> {
+                        finish() // Fermer l'écran si aucune information
+                    }
+                }
+            })
+
+    }}
 
     @Composable
-    fun CurrentProgramScreen() {
+    fun CurrentProgramScreen(onBackClick: () -> Unit) {
         // Données fictives
         val listName = listOf("Exercice 1", "Exercice 2", "Exercice 3")
         val listRounds = listOf("5", "6", "2")
@@ -73,6 +92,18 @@ class CurrentProgram : ComponentActivity() {
                 )
             }
         }
+
+        Box(
+            modifier = Modifier.fillMaxSize()
+        ) {
+            Button(
+                onClick = onBackClick,
+                modifier = Modifier.align(Alignment.BottomCenter)
+            ) {
+                Text("\uD83D\uDC41\uFE0F    ")
+            }
+        }
+
     }
 
     @Composable
