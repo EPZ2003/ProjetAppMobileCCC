@@ -28,7 +28,9 @@ class RoundInput : AppCompatActivity()
             btnGoToCP.setOnClickListener {
 
                 val intent = Intent(this,CurrentProgram::class.java)
+                intent.putExtra("origin","round_input")
                 startActivity(intent)
+
             }
 
             btnGoToAE.setOnClickListener {
