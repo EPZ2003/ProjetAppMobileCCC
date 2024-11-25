@@ -28,6 +28,7 @@ class RestTimeInput : AppCompatActivity()
             btnGoToCP.setOnClickListener {
 
                 val intent = Intent(this,CurrentProgram::class.java)
+                intent.putExtra("origin","rest_time_input")
                 startActivity(intent)
             }
 
