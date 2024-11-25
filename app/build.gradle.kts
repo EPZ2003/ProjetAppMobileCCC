@@ -50,11 +50,18 @@ dependencies {
     implementation(libs.androidx.compose.material)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.navigation.runtime.ktx)
+    implementation(libs.androidx.material3.android)
     debugImplementation(libs.androidx.compose.ui.tooling)
 
     // Room Dependencies
     implementation(libs.androidx.room.runtime)
     ksp(libs.androidx.room.compiler)
+    //ktx implementation
+    implementation(libs.androidx.room.ktx)
+
+    //Coroutines
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1") // Latest version
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3") // Compatible with Kotlin 1.9.10
 
     // AndroidX and Core Libraries
     implementation(libs.androidx.core.ktx)

@@ -25,6 +25,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.room.Room
+import com.example.mobiledevicesccc.DBFunctions.CreateList
+import com.example.mobiledevicesccc.data.Exercise
+import com.example.mobiledevicesccc.data.ExerciseDatabase
+import com.example.mobiledevicesccc.navButton.GoToPause
+import com.example.mobiledevicesccc.navButton.StartNewActictivty
+import kotlinx.coroutines.flow.Flow
 
 class Workout : ComponentActivity() {
     /*@SuppressLint("MissingInflatedId")
@@ -50,9 +57,16 @@ class Workout : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
-            displayWorkout(context = this)
 
+        val db = Room.databaseBuilder(
+            applicationContext,
+            ExerciseDatabase::class.java, "Exercise_database"
+        ).build()
+        val exerciseDao = db.ExerciseDao()
+        val exercise: Flow<List<Exercise>> = exerciseDao.getAllExercise()
+        setContent {
+            //displayWorkout(context = this)
+            AllDisplaying(exerciseFlow = exercise, context = this)
 
         }
 
@@ -149,15 +163,26 @@ fun displayWorkout(context: Context){
 }
 
 @Composable
+fun AllDisplaying (exerciseFlow: Flow<List<Exercise>>, context: Context){
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier
+        .padding(bottom = 42.dp)
+    ) {
+        Title()
+        CreateList(exerciseFlow = exerciseFlow)
+    }
+    GoToPause(context = context, activityClass = RestTime::class.java)
+    StartNewActictivty(context, activityClass = RestTime::class.java)
+}
+@Composable
 fun Title (){
-
         Text(
             text = "Workout",
             fontSize = 56.sp, // Larger font for a title
             fontWeight = FontWeight.Bold,
             textAlign = TextAlign.Center
         )
-
 }
 
 @Composable
