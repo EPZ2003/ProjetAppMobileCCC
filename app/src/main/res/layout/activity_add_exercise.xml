@@ -61,13 +61,23 @@
         app:layout_constraintEnd_toStartOf="@+id/btnAEWP"
         app:layout_constraintStart_toEndOf="@+id/btnBack" />
 
-    <Button
-        android:id="@+id/btnRoudInput"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="184dp"
-        android:text="Round Input"
+    <Spinner
+        android:id="@+id/exospinner"
+        android:layout_width="178dp"
+        android:layout_height="42dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnRoudInput"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.13"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleAE" />
+
+    <Spinner
+        android:id="@+id/repspinner"
+        android:layout_width="157dp"
+        android:layout_height="41dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnRoudInput"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.89"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleAE" />
 
@@ -75,10 +85,33 @@
         android:id="@+id/btnRTI"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="40dp"
         android:text="Rest Time Input "
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnRoudInput" />
+
+    <Button
+        android:id="@+id/btnRoudInput"
+        android:layout_width="153dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="332dp"
+        android:text="Round Input"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleAE" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="110dp"
+        android:layout_height="46dp"
+        android:text="ADD"
+        app:layout_constraintBottom_toTopOf="@+id/btnAEHP"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.511"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnRTI"
+        app:layout_constraintVertical_bias="0.296" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

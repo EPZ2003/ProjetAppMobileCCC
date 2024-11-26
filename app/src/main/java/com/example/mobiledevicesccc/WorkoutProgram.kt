@@ -14,17 +14,28 @@ import androidx.recyclerview.widget.RecyclerView
 
 class WorkoutProgram : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
-    override fun onCreate(savedInstanceState: Bundle?) {
+
+//    private lateinit var recyclerView: RecyclerView
+//    private lateinit var adapter: ExerciseAdapter
+
+    override fun onCreate(savedInstanceState: Bundle?)
+    {
         super.onCreate(savedInstanceState)
+//        if (savedInstanceState != null) {
+//            super.onSaveInstanceState(savedInstanceState)
+//            super.onRestoreInstanceState(savedInstanceState)
+//        }
 
         setContentView(R.layout.activity_workout_program)
+
 
 
         // Données à afficher
         val exercises = mutableListOf(
             Exercise(1, "Push-ups", 3, 30),
             Exercise(2, "Squats", 4, 20),
-            Exercise(3, "Burpees", 5, 15)
+            Exercise(3, "Burpees", 5, 15),
+            Exercise(4, "traction", 5, 15)
         )
         val recyclerView = findViewById<RecyclerView>(R.id.myRecyclerView)
         val adapter = ExerciseAdapter(exercises) { selectedExercise ->
@@ -37,6 +48,7 @@ class WorkoutProgram : AppCompatActivity() {
             intent.putExtra("EXERCISE_REST_TIME", selectedExercise.restTime)
             startActivity(intent)
         }
+
 
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
@@ -88,5 +100,22 @@ class WorkoutProgram : AppCompatActivity() {
         }
 
     }
+// garde en memoire
+//    override fun onSaveInstanceState(outState: Bundle) {
+//        super.onSaveInstanceState(outState)
+//
+//        // Sauvegarder la position de défilement actuelle
+//        val layoutManager = recyclerView.layoutManager as LinearLayoutManager
+//        val scrollPosition = layoutManager.findFirstVisibleItemPosition()
+//        outState.putInt("scroll_position", scrollPosition)
+//    }
+//
+//    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+//        super.onRestoreInstanceState(savedInstanceState)
+//
+//        // Restaurer la position de défilement
+//        val savedScrollPosition = savedInstanceState.getInt("scroll_position", 0)
+//        recyclerView.scrollToPosition(savedScrollPosition)
+//    }
 
 }
