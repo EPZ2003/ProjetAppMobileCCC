@@ -32,6 +32,9 @@ class WorkoutProgram : AppCompatActivity() {
             // Gestion du clic sur le bouton Update
             val intent = Intent(this, UpdateExercice::class.java)
             intent.putExtra("EXERCISE_ID", selectedExercise.id)
+            intent.putExtra("EXERCISE_NAME", selectedExercise.name)
+            intent.putExtra("EXERCISE_ROUNDS", selectedExercise.round)
+            intent.putExtra("EXERCISE_REST_TIME", selectedExercise.restTime)
             startActivity(intent)
         }
 

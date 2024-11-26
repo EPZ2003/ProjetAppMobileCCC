@@ -18,17 +18,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/txtRow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="64dp"
-        android:text="Name, Round, Rest Time"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleUE" />
-
     <Button
         android:id="@+id/btnUEToWP"
         android:layout_width="wrap_content"
@@ -38,4 +27,109 @@
         android:text="Workout Program"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <Spinner
+        android:id="@+id/attributeSpinner"
+        android:layout_width="201dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="92dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnUEToWP"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleUE"
+        app:layout_constraintVertical_bias="0.296"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/SInput"
+        android:layout_width="95dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="192dp"
+        android:ems="10"
+        android:inputType="number"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/btnUEToWP"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.639"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/submitRoundButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="68dp"
+        android:text="Submit Round"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/btnUEToWP"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.721"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/attributeSpinner"
+        app:layout_constraintVertical_bias="0.32" />
+
+    <Button
+        android:id="@+id/submitTimeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="submit Time"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.787"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SInput" />
+
+    <EditText
+        android:id="@+id/MinInput"
+        android:layout_width="77dp"
+        android:layout_height="57dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="188dp"
+        android:ems="10"
+        android:inputType="number"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/btnUEToWP"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.337"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/roundInput"
+        android:layout_width="234dp"
+        android:layout_height="50dp"
+        android:hint="Round"
+        android:inputType="number"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/submitRoundButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.35"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/attributeSpinner"
+        app:layout_constraintVertical_bias="0.535" />
+
+    <TextView
+        android:id="@+id/lblmin_s"
+        android:layout_width="175dp"
+        android:layout_height="39dp"
+        android:layout_marginBottom="244dp"
+        android:text="min                  s"
+        android:textSize="24sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="@+id/MinInput" />
+
+    <TextView
+        android:id="@+id/exercise"
+        android:layout_width="264dp"
+        android:layout_height="33dp"
+        android:text="TextView"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/attributeSpinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleUE" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
