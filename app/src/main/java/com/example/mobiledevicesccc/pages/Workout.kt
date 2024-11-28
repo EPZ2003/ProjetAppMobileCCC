@@ -36,26 +36,6 @@ import com.example.mobiledevicesccc.navButton.StartNewActictivty
 import kotlinx.coroutines.flow.Flow
 
 class Workout : ComponentActivity() {
-    /*@SuppressLint("MissingInflatedId")
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_workout)
-
-        val btnRestTimeW = findViewById<Button>(R.id.btnRestTimeW)
-        val btnWHP = findViewById<Button>(R.id.btnWHP)
-
-        btnRestTimeW.setOnClickListener {
-
-            val intent = Intent(this,RestTime::class.java)
-            startActivity(intent)
-        }
-        btnWHP.setOnClickListener {
-
-            val intent = Intent(this,WorkoutPlanning::class.java)
-            startActivity(intent)
-        }
-    }*/
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
