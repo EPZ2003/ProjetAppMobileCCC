@@ -30,12 +30,16 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.lifecycleScope
 import androidx.room.Room
 
 import com.example.mobiledevicesccc.data.Exercise
 import com.example.mobiledevicesccc.data.ExerciseDatabase
+import com.example.mobiledevicesccc.modelviepackage.ExerciseScreen
+import com.example.mobiledevicesccc.modelviepackage.ViewModelGetId
 import com.example.mobiledevicesccc.navButton.StartNewActictivty
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.launch
 
 
 //AppCompatActivity()
@@ -66,8 +70,9 @@ class HomePage : ComponentActivity() {
         ).build()
         val exerciseDao = db.ExerciseDao()
         val exercise: Flow<List<Exercise>> = exerciseDao.getAllExercise()
-
+        val viewModel = ViewModelGetId(exerciseDao)
         setContent {
+
 
             MessageCard(context = this)
             StartNewActictivty(context = this, activityClass = WorkoutPlanning::class.java)

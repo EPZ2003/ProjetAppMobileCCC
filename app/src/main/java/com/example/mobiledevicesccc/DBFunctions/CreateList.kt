@@ -1,5 +1,6 @@
 package com.example.mobiledevicesccc.DBFunctions
 
+import android.content.Context
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -20,9 +21,12 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.room.Room
 import com.example.mobiledevicesccc.data.Exercise
+import com.example.mobiledevicesccc.data.ExerciseDatabase
 import kotlinx.coroutines.flow.Flow
 import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
 
@@ -73,3 +77,4 @@ fun CreateList (exerciseFlow: Flow<List<Exercise>>) {
     }
 
 }
+

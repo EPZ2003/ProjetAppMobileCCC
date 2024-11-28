@@ -27,8 +27,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.room.Room
 import com.example.mobiledevicesccc.DBFunctions.CreateList
+import com.example.mobiledevicesccc.EachPagefunctions.WorkoutDisplaying
 import com.example.mobiledevicesccc.data.Exercise
 import com.example.mobiledevicesccc.data.ExerciseDatabase
+import com.example.mobiledevicesccc.modelviepackage.ViewModelGetId
 import com.example.mobiledevicesccc.navButton.GoToPause
 import com.example.mobiledevicesccc.navButton.StartNewActictivty
 import kotlinx.coroutines.flow.Flow
@@ -64,11 +66,13 @@ class Workout : ComponentActivity() {
         ).build()
         val exerciseDao = db.ExerciseDao()
         val exercise: Flow<List<Exercise>> = exerciseDao.getAllExercise()
+        val viewModel = ViewModelGetId(exerciseDao)
         setContent {
-            //displayWorkout(context = this)
-            AllDisplaying(exerciseFlow = exercise, context = this)
 
+            //AllDisplaying(exerciseFlow = exercise, context = this)
+            WorkoutDisplaying(viewModel,TrackingWorkout.tracking,context = this)
         }
+        TrackingWorkout.tracking ++
 
     }
 }
@@ -76,7 +80,7 @@ class Workout : ComponentActivity() {
 class TrackingWorkout {
     companion object {
         var begin = 1
-        var tracking = 5 // TODO LINK WHEN YOU CLICK INTO THE REST TIME BUTTON
+        var tracking = 1 // TODO LINK WHEN YOU CLICK INTO THE REST TIME BUTTON
     }
 }
 @Composable
