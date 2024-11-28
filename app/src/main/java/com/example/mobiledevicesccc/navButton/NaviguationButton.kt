@@ -14,7 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.mobiledevicesccc.RestTime
+import com.example.mobiledevicesccc.pages.RestTime
 
 //Go to page WP
 @Composable

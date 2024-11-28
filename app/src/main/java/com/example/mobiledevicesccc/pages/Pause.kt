@@ -1,4 +1,4 @@
-package com.example.mobiledevicesccc
+package com.example.mobiledevicesccc.pages
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -7,8 +7,7 @@ import android.widget.Button
 
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.example.mobiledevicesccc.R
 
 class Pause : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
@@ -27,11 +26,11 @@ class Pause : AppCompatActivity() {
         }
         btnPW.setOnClickListener {
 
-            val intent = Intent(this,Workout::class.java)
+            val intent = Intent(this, Workout::class.java)
             startActivity(intent)
         }
         btnPHP.setOnClickListener {
-            val intent = Intent(this,HomePage::class.java)
+            val intent = Intent(this, HomePage::class.java)
             startActivity(intent)
         }
     }

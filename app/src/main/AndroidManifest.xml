@@ -13,37 +13,37 @@
         android:theme="@style/Theme.MobileDevicesCCC"
         tools:targetApi="31">
         <activity
-            android:name=".AddExercise"
+            android:name=".pages.AddExercise"
             android:exported="false" />
         <activity
-            android:name=".Workout"
+            android:name=".pages.Workout"
             android:exported="false" />
         <activity
-            android:name=".Pause"
+            android:name=".pages.Pause"
             android:exported="false" />
         <activity
-            android:name=".RestTime"
+            android:name=".pages.RestTime"
             android:exported="false" />
         <activity
-            android:name=".CurrentProgram"
+            android:name=".pages.CurrentProgram"
             android:exported="false" />
         <activity
-            android:name=".UpdateExercice"
+            android:name=".pages.UpdateExercice"
             android:exported="false" />
         <activity
-            android:name=".WorkoutProgram"
+            android:name=".pages.WorkoutProgram"
             android:exported="false" />
         <activity
-            android:name=".WorkoutPlanning"
+            android:name=".pages.WorkoutPlanning"
             android:exported="false" />
         <activity
-            android:name=".RoundInput"
+            android:name=".pages.RoundInput"
             android:exported="false" />
         <activity
-            android:name=".RestTimeInput"
+            android:name=".pages.RestTimeInput"
             android:exported="false" />
         <activity
-            android:name=".HomePage"
+            android:name=".pages.HomePage"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

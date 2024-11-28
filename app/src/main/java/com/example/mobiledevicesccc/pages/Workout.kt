@@ -1,4 +1,4 @@
-package com.example.mobiledevicesccc
+package com.example.mobiledevicesccc.pages
 
 import android.content.Context
 import android.os.Bundle
@@ -68,11 +68,9 @@ class Workout : ComponentActivity() {
         val exercise: Flow<List<Exercise>> = exerciseDao.getAllExercise()
         val viewModel = ViewModelGetId(exerciseDao)
         setContent {
-
-            //AllDisplaying(exerciseFlow = exercise, context = this)
-            WorkoutDisplaying(viewModel,TrackingWorkout.tracking,context = this)
+            WorkoutDisplaying(viewModel, TrackingWorkout.tracking,context = this)
         }
-        TrackingWorkout.tracking ++
+        TrackingWorkout.tracking++
 
     }
 }
@@ -129,7 +127,7 @@ fun displayWorkout(context: Context){
                         .background(backgroundColors[i])
                 ) {
                     Text(
-                        text = stringList[i+TrackingWorkout.tracking],
+                        text = stringList[i+ TrackingWorkout.tracking],
                         fontSize = 46.sp
                     )
                 }
