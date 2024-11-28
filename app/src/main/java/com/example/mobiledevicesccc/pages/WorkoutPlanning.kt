@@ -1,14 +1,12 @@
-package com.example.mobiledevicesccc
+package com.example.mobiledevicesccc.pages
 
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.example.mobiledevicesccc.R
 
 class WorkoutPlanning : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
@@ -26,7 +24,7 @@ class WorkoutPlanning : AppCompatActivity() {
         val btn6 = findViewById<Button>(R.id.btn6)
 
         btnGoToHP.setOnClickListener {
-            val intent = Intent(this,HomePage::class.java)
+            val intent = Intent(this, HomePage::class.java)
             startActivity(intent)
         }
         btn1.setOnClickListener {

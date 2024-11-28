@@ -1,4 +1,4 @@
-package com.example.mobiledevicesccc
+package com.example.mobiledevicesccc.pages
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.mobiledevicesccc.R
 
 class WorkoutProgram : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
@@ -28,17 +29,17 @@ class WorkoutProgram : AppCompatActivity() {
 
         btnADD.setOnClickListener {
 
-            val intent = Intent(this,AddExercise::class.java)
+            val intent = Intent(this, AddExercise::class.java)
             intent.putExtra("KeyBtnToADD",receiverTxt)
             startActivity(intent)
 
         }
         btnWPHP.setOnClickListener {
-            val intent = Intent(this,HomePage::class.java)
+            val intent = Intent(this, HomePage::class.java)
             startActivity(intent)
         }
         btnWPWP.setOnClickListener {
-            val intent = Intent(this,WorkoutPlanning::class.java)
+            val intent = Intent(this, WorkoutPlanning::class.java)
             startActivity(intent)
         }
 

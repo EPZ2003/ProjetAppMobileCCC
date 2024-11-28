@@ -1,4 +1,4 @@
-package com.example.mobiledevicesccc
+package com.example.mobiledevicesccc.pages
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -7,8 +7,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.example.mobiledevicesccc.R
 
 class AddExercise : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
@@ -30,26 +29,26 @@ class AddExercise : AppCompatActivity() {
 
         btnRoudInput.setOnClickListener {
 
-            val intent = Intent(this,RoundInput::class.java)
+            val intent = Intent(this, RoundInput::class.java)
             startActivity(intent)
         }
         btnRTI.setOnClickListener {
 
 
-            val intent = Intent(this,RestTimeInput::class.java)
+            val intent = Intent(this, RestTimeInput::class.java)
             startActivity(intent)
         }
         btnBack.setOnClickListener {
-            val intent = Intent(this,WorkoutProgram::class.java)
+            val intent = Intent(this, WorkoutProgram::class.java)
             intent.putExtra("KeyBtn",receiverTxt)
             startActivity(intent)
         }
         btnAEHP.setOnClickListener {
-            val intent = Intent(this,HomePage::class.java)
+            val intent = Intent(this, HomePage::class.java)
             startActivity(intent)
         }
         btnAEWP.setOnClickListener {
-            val intent = Intent(this,WorkoutPlanning::class.java)
+            val intent = Intent(this, WorkoutPlanning::class.java)
             startActivity(intent)
         }
     }

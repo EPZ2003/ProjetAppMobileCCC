@@ -9,12 +9,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.mobiledevicesccc.DisplayBtn
-import com.example.mobiledevicesccc.RestTime
-import com.example.mobiledevicesccc.Title
+import com.example.mobiledevicesccc.pages.DisplayBtn
+import com.example.mobiledevicesccc.pages.RestTime
+import com.example.mobiledevicesccc.pages.Title
 import com.example.mobiledevicesccc.modelviepackage.ExerciseScreen
 import com.example.mobiledevicesccc.modelviepackage.ViewModelGetId
 import com.example.mobiledevicesccc.navButton.StartNewActictivty
+import com.example.mobiledevicesccc.pages.HomePage
 
 @Composable
 fun WorkoutDisplaying(viewModel: ViewModelGetId,id: Int,context: Context){
@@ -34,6 +35,6 @@ fun WorkoutDisplaying(viewModel: ViewModelGetId,id: Int,context: Context){
         DisplayBtn(context)
     }
 
-    StartNewActictivty(context, activityClass = RestTime::class.java)
+    StartNewActictivty(context, activityClass = HomePage::class.java)
 
 }
