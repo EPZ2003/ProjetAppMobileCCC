@@ -1,4 +1,4 @@
-package com.example.mobiledevicesccc
+package com.example.mobiledevicesccc.navButton
 
 import android.content.Context
 import android.content.Intent
@@ -14,10 +14,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.example.mobiledevicesccc.pages.RestTime
 
 //Go to page WP
 @Composable
-fun startNewActictivty(
+fun StartNewActictivty(
     context: Context,
     activityClass: Class<*>,
 
@@ -51,7 +52,12 @@ fun GoToPause(
     modifier: Modifier = Modifier
 
 )
-{
+{Box(
+    modifier = modifier
+        .fillMaxSize()
+        .padding(16.dp),
+    contentAlignment = Alignment.Center // Align the button to the bottom-right corner
+) {
 
     Button(
         onClick = {
@@ -65,6 +71,7 @@ fun GoToPause(
     ) {
         Text(text = "Rest Time")
     }
+}
 }
 
 
