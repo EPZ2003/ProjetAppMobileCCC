@@ -45,7 +45,7 @@ class HomePage : ComponentActivity() {
         setContentView(R.layout.activity_homepage)
 
         val btnGoToWP = findViewById<Button>(R.id.GoToWP)
-
+        
 
         btnGoToWP.setOnClickListener {
 

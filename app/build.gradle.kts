@@ -52,7 +52,7 @@ dependencies {
     implementation(libs.androidx.navigation.runtime.ktx)
     implementation(libs.androidx.material3.android)
     debugImplementation(libs.androidx.compose.ui.tooling)
-    implementation(libs.compose.material3)
+
 
     // Room Dependencies
     implementation(libs.androidx.room.runtime)
