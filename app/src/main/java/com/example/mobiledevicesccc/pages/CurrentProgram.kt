@@ -19,12 +19,27 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.room.Room
+import com.example.mobiledevicesccc.EachPagefunctions.CurrentPageDisplaying
+import com.example.mobiledevicesccc.EachPagefunctions.HomePageDisplaying
+import com.example.mobiledevicesccc.data.Exercise
+import com.example.mobiledevicesccc.data.ExerciseDatabase
+import com.example.mobiledevicesccc.modelviepackage.ViewModelGetAllData
+import com.example.mobiledevicesccc.modelviepackage.ViewModelGetId
+import kotlinx.coroutines.flow.Flow
 
 class CurrentProgram : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         val origin = intent.getStringExtra("origin")
+        val db = Room.databaseBuilder(
+            applicationContext,
+            ExerciseDatabase::class.java, "Exercise_database"
+        ).build()
+        val exerciseDao = db.ExerciseDao()
+        val exercise: Flow<List<Exercise>> = exerciseDao.getAllExercise()
+        val viewModel = ViewModelGetAllData(exerciseDao)
         setContent {
             CurrentProgramScreen(onBackClick = {
                 when (origin) {
@@ -42,12 +57,13 @@ class CurrentProgram : ComponentActivity() {
                         finish() // Fermer l'écran si aucune information
                     }
                 }
-            })
+            },viewModel)
+
 
     }}
 
     @Composable
-    fun CurrentProgramScreen(onBackClick: () -> Unit) {
+    fun CurrentProgramScreen(onBackClick: () -> Unit,viewModel: ViewModelGetAllData) {
         // Données fictives
         val listName = listOf("Exercice 1", "Exercice 2", "Exercice 3")
         val listRounds = listOf("5", "6", "2")
@@ -69,7 +85,7 @@ class CurrentProgram : ComponentActivity() {
                 modifier = Modifier.padding(bottom = 16.dp)
             )
 
-            // Itération pour chaque exercice
+            /*// Itération pour chaque exercice
             listName.forEachIndexed { index, name ->
                 val rounds = listRounds[index]
                 val minutes = listMinuteRest[index]
@@ -82,7 +98,8 @@ class CurrentProgram : ComponentActivity() {
                     minutes = minutes,
                     seconds = seconds
                 )
-            }
+            }*/
+            CurrentPageDisplaying(viewModel)
         }
 
         Box(
@@ -98,32 +115,5 @@ class CurrentProgram : ComponentActivity() {
 
     }
 
-    @Composable
-    fun ExerciseItem(name: String, rounds: String, minutes: String, seconds: String) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(vertical = 8.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            // Nom de l'exercice
-            Text(
-                text = name,
-                fontSize = 18.sp,
-                modifier = Modifier.weight(1f) // Occupe l'espace restant
-            )
 
-            // Nombre de rounds
-            Text(
-                text = "$rounds rounds",
-                fontSize = 16.sp,
-                modifier = Modifier.padding(end = 16.dp)
-            )
-
-            // Temps de repos
-            Text(
-                text = "$minutes:$seconds",
-                fontSize = 16.sp
-            )
-        }
-}}
+}

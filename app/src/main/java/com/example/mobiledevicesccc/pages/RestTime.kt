@@ -1,38 +1,50 @@
 package com.example.mobiledevicesccc.pages
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import com.example.mobiledevicesccc.R
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.material.Text
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.lifecycle.lifecycleScope
+import androidx.room.Room
+import com.example.mobiledevicesccc.EachPagefunctions.RestTimeDisplaying
 
-class RestTime : AppCompatActivity() {
+import com.example.mobiledevicesccc.EachPagefunctions.WorkoutDisplaying
+
+import com.example.mobiledevicesccc.data.Exercise
+import com.example.mobiledevicesccc.data.ExerciseDao
+import com.example.mobiledevicesccc.data.ExerciseDatabase
+import com.example.mobiledevicesccc.modelviepackage.RestTimeTimerExercise
+import com.example.mobiledevicesccc.modelviepackage.ViewModelGetId
+import com.example.mobiledevicesccc.navButton.CancelRestTimePage
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.Flow
+
+
+
+
+class RestTime : ComponentActivity() {
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_rest_time)
+        val db = Room.databaseBuilder(
+            applicationContext,
+            ExerciseDatabase::class.java, "Exercise_database"
+        ).build()
+        val exerciseDao = db.ExerciseDao()
 
-        val btnRTP = findViewById<Button>(R.id.btnRTP)
-        val btnRTW = findViewById<Button>(R.id.btnRTW)
-        val btnRTHP = findViewById<Button>(R.id.btnRTHP)
-
-        btnRTP.setOnClickListener {
-
-            val intent = Intent(this, Pause::class.java)
-            startActivity(intent)
-        }
-        btnRTW.setOnClickListener {
-
-            val intent = Intent(this, Workout::class.java)
-            startActivity(intent)
-        }
-        btnRTHP.setOnClickListener {
-
-            val intent = Intent(this, HomePage::class.java)
-            startActivity(intent)
+        val viewModel = ViewModelGetId(exerciseDao)
+        setContent {
+            RestTimeDisplaying(viewModel, TrackingWorkout.tracking,context = this)
+            CancelRestTimePage(context = this)
         }
     }
 }
+
