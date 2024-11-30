@@ -59,13 +59,13 @@ class HomePage : ComponentActivity() {
             ExerciseDatabase::class.java, "Exercise_database"
         ).build()
         val exerciseDao = db.ExerciseDao()
-        val exercise: Flow<List<Exercise>> = exerciseDao.getAllExercise()
+        //val exercise: Flow<List<Exercise>> = exerciseDao.getAllExercise()
         val viewModel = ViewModelGetAllData(exerciseDao)
         setContent {
 
             //HomePageDisplaying(viewModel)
             MessageCard(context = this,viewModel)
-            StartNewActictivty(context = this, activityClass = WorkoutPlanning::class.java)
+            StartNewActictivty(context = this, activityClass = WorkoutPlanning::class.java, text = "Workout Planning")
 
 
         }
