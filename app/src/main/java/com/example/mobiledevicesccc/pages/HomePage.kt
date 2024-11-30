@@ -54,11 +54,16 @@ class HomePage : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //1er etape initie DB
         val db = Room.databaseBuilder(
             applicationContext,
             ExerciseDatabase::class.java, "Exercise_database"
         ).build()
+        //2eme etape creer DAO
         val exerciseDao = db.ExerciseDao()
+
+        //3eme etape creer viewmodel
+
         //val exercise: Flow<List<Exercise>> = exerciseDao.getAllExercise()
         val viewModel = ViewModelGetAllData(exerciseDao)
         setContent {
