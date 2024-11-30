@@ -4,15 +4,12 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.Spinner
 import android.widget.TextView
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.example.mobiledevicesccc.pages.WorkoutProgram
 
 class AddExercise : AppCompatActivity() {
     @SuppressLint("MissingInflatedId", "CutPasteId")
@@ -47,30 +44,30 @@ class AddExercise : AppCompatActivity() {
         adapters.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         repspinner.adapter = adapters
 
-        btnRoudInput.setOnClickListener {
-            val intent = Intent(this,RoundInput::class.java)
-            startActivity(intent)
-        }
-
-        btnRTI.setOnClickListener {
-            val intent = Intent(this,RestTimeInput::class.java)
-            startActivity(intent)
-        }
+//        btnRoudInput.setOnClickListener {
+//            val intent = Intent(this,RoundInput::class.java)
+//            startActivity(intent)
+//        }
+//
+//        btnRTI.setOnClickListener {
+//            val intent = Intent(this,RestTimeInput::class.java)
+//            startActivity(intent)
+//        }
 
         btnBack.setOnClickListener {
-            val intent = Intent(this,WorkoutProgram::class.java)
+            val intent = Intent(this, WorkoutProgram::class.java)
             intent.putExtra("KeyBtn",receiverTxt)
             startActivity(intent)
         }
 
-        btnAEHP.setOnClickListener {
-            val intent = Intent(this,HomePage::class.java)
-            startActivity(intent)
-        }
-
-        btnAEWP.setOnClickListener {
-            val intent = Intent(this,WorkoutPlanning::class.java)
-            startActivity(intent)
-        }
+//        btnAEHP.setOnClickListener {
+//            val intent = Intent(this,HomePage::class.java)
+//            startActivity(intent)
+//        }
+//
+//        btnAEWP.setOnClickListener {
+//            val intent = Intent(this,WorkoutPlanning::class.java)
+//            startActivity(intent)
+//        }
     }
 }

@@ -10,7 +10,6 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
 import android.widget.TextView
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mobiledevicesccc.R
@@ -44,7 +43,7 @@ class UpdateExercice : AppCompatActivity() {
         var exercicetext = findViewById<TextView>(R.id.exercise)
         exercicetext.text = "Ex "+exerciseId+": "+exerciseName+"("+exerciseRounds+","+exercisemin+"m"+exercisesec+"s)"
 
-        btnUEToWP.setOnClickListener{
+        btnUEToWP.setOnClickListener {
             val intent = Intent(this, WorkoutProgram::class.java)
             startActivity(intent)
         }
