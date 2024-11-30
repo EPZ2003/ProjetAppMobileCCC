@@ -16,6 +16,7 @@ import com.example.mobiledevicesccc.modelviepackage.ExerciseScreen
 import com.example.mobiledevicesccc.modelviepackage.ViewModelGetId
 import com.example.mobiledevicesccc.navButton.StartNewActictivty
 import com.example.mobiledevicesccc.pages.HomePage
+import com.example.mobiledevicesccc.pages.TrackingWorkout
 
 @Composable
 fun WorkoutDisplaying(viewModel: ViewModelGetId,id: Int,context: Context){
@@ -35,6 +36,6 @@ fun WorkoutDisplaying(viewModel: ViewModelGetId,id: Int,context: Context){
         DisplayBtn(context)
     }
 
-    StartNewActictivty(context, activityClass = HomePage::class.java)
-
+    StartNewActictivty(context, activityClass = HomePage::class.java, text = "Home Page")
+    TrackingWorkout.tracking++
 }

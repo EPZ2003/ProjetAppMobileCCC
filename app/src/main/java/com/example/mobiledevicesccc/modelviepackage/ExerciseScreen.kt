@@ -10,12 +10,15 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+
 import com.example.mobiledevicesccc.data.Exercise
+
 
 
 @Composable
@@ -26,9 +29,11 @@ fun ExerciseScreen(viewModel: ViewModelGetId,id: Int,text: String) {
     }else{
         Text("")
     }
+
 }
 @Composable
 fun DisplayExercise(exercise: Exercise, text: String) {
+
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -50,6 +55,7 @@ fun DisplayExercise(exercise: Exercise, text: String) {
         ) {
             if (text == "NULL"){
                 Text(exercise.time)
+
             }else{
                 Text(text)
             }

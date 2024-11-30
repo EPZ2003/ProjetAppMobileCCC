@@ -13,15 +13,19 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.mobiledevicesccc.pages.RestTime
+import com.example.mobiledevicesccc.pages.TrackingWorkout
+import com.example.mobiledevicesccc.pages.Workout
 
 //Go to page WP
 @Composable
 fun StartNewActictivty(
     context: Context,
     activityClass: Class<*>,
-
+    text : String,
     modifier: Modifier = Modifier
 
 ) {
@@ -37,7 +41,7 @@ fun StartNewActictivty(
                 context.startActivity(intent)
             }
         ) {
-            Text(text = "GotoWp")
+            Text(text = text)
         }
 
     }
@@ -75,3 +79,28 @@ fun GoToPause(
 }
 
 
+@Composable
+fun CancelRestTimePage(context: Context){
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp),
+        contentAlignment = Alignment.BottomEnd // Align the button to the bottom-right corner
+    ){
+
+    Button(
+        onClick = {
+            // Navigate to RestTime activity
+            TrackingWorkout.tracking--
+            val intent = Intent(context, Workout::class.java)
+            context.startActivity(intent)
+        },
+    ) { Text(text = "Cancel") }
+    }
+}
+
+@Preview
+@Composable
+fun Test(){
+    CancelRestTimePage(context = LocalContext.current)
+}

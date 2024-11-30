@@ -2,6 +2,7 @@ package com.example.mobiledevicesccc.data
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.coroutines.flow.Flow
 
 
 @Entity(tableName = "Exercise")

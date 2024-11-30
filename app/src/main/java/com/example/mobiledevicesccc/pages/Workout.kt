@@ -36,28 +36,6 @@ import com.example.mobiledevicesccc.navButton.StartNewActictivty
 import kotlinx.coroutines.flow.Flow
 
 class Workout : ComponentActivity() {
-    /*@SuppressLint("MissingInflatedId")
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_workout)
-
-        val btnRestTimeW = findViewById<Button>(R.id.btnRestTimeW)
-        val btnWHP = findViewById<Button>(R.id.btnWHP)
-
-        btnRestTimeW.setOnClickListener {
-
-            val intent = Intent(this,RestTime::class.java)
-            // Ajouter un extra pour indiquer que le timer doit être lancé
-            intent.putExtra("start_timer", true)
-            startActivity(intent)
-        }
-        btnWHP.setOnClickListener {
-
-            val intent = Intent(this,WorkoutPlanning::class.java)
-            startActivity(intent)
-        }
-    }*/
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,22 +45,23 @@ class Workout : ComponentActivity() {
             ExerciseDatabase::class.java, "Exercise_database"
         ).build()
         val exerciseDao = db.ExerciseDao()
-        val exercise: Flow<List<Exercise>> = exerciseDao.getAllExercise()
         val viewModel = ViewModelGetId(exerciseDao)
         setContent {
             WorkoutDisplaying(viewModel, TrackingWorkout.tracking,context = this)
         }
-        TrackingWorkout.tracking++
+
 
     }
 }
 
 class TrackingWorkout {
     companion object {
-        var begin = 1
-        var tracking = 1 // TODO LINK WHEN YOU CLICK INTO THE REST TIME BUTTON
+        var begin = 0
+        var tracking = 0 // TODO LINK WHEN YOU CLICK INTO THE REST TIME BUTTON
     }
 }
+
+/*
 @Composable
 fun displayWorkout(context: Context){
     var status = ""
@@ -164,8 +143,8 @@ fun displayWorkout(context: Context){
 
     }
 
-}
-
+}*/
+/*
 @Composable
 fun AllDisplaying (exerciseFlow: Flow<List<Exercise>>, context: Context){
     Column(
@@ -178,7 +157,7 @@ fun AllDisplaying (exerciseFlow: Flow<List<Exercise>>, context: Context){
     }
     GoToPause(context = context, activityClass = RestTime::class.java)
     StartNewActictivty(context, activityClass = RestTime::class.java)
-}
+}*/
 @Composable
 fun Title (){
         Text(
@@ -189,11 +168,12 @@ fun Title (){
         )
 }
 
+/*
 @Composable
 fun WorkoutPage (context: Context){
 
     displayWorkout(context)
-}
+}*/
 @Composable
 fun DisplayBtn(context: Context) {
     Column(
@@ -208,14 +188,6 @@ fun DisplayBtn(context: Context) {
 
 
     }
-
-}
-
-@Preview
-@Composable
-fun PreviewdisplayWorkout(){
-
-    WorkoutPage(context = LocalContext.current)
 
 }
 
