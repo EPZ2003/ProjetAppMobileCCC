@@ -5,7 +5,8 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.text.BasicText
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -13,63 +14,45 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.core.content.ContextCompat.startActivity
-import androidx.navigation.ActivityNavigatorExtras
 import androidx.room.Room
-import com.example.mobiledevicesccc.AddExercise
 import com.example.mobiledevicesccc.data.Exercise
 import com.example.mobiledevicesccc.data.ExerciseDatabase
 import com.example.mobiledevicesccc.modelviepackage.ExerciseList
 import com.example.mobiledevicesccc.modelviepackage.ViewModelGetAllData
-import com.example.mobiledevicesccc.navButton.StartNewActictivty
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.forEach
 
 class WorkoutProgram : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val exerciseIndex = intent.getIntExtra("KeyBtn", -1)
+        val exerciseIndex = intent.getStringExtra("KeyBtn")
+        val index = exerciseIndex
         val db = Room.databaseBuilder(applicationContext, ExerciseDatabase::class.java, "Exercise_database").build()
         val exerciseDao = db.ExerciseDao()
         val exercise: Flow<List<com.example.mobiledevicesccc.data.Exercise>> = exerciseDao.getAllExercise()
         val viewModel = ViewModelGetAllData(exerciseDao)
-        val exercises = listOf(
-            Exercise(id = 1, name = "Push-ups", round = 3, time = "30s", typeExercise = "Strength"),
-            Exercise(id = 2, name = "Squats", round = 4, time = "45s", typeExercise = "Strength"),
-            Exercise(id = 3, name = "Plank", round = 2, time = "1m", typeExercise = "Core")
-        )
         setContent {
-            WorkingProgramScreen(this,exercise,exerciseIndex)
+            if (index != null) {
+                WorkingProgramScreen(this,exercise,index)
+            }else{
+                WorkingProgramScreen(this,exercise,"1")
+            }
         }
     }
 }
 
 @Composable
-fun WorkingProgramListExercise(context: Context,viewModelGetAllData: ViewModelGetAllData){
-    val exerciseList by viewModelGetAllData.getAllData().collectAsState(initial = emptyList())
-    if (exerciseList != null) {
-        ExerciseList(exerciseList)
-    }else{
-        Text("")
-    }
-
-}
-
-
-@Composable
-fun WorkingProgramScreen(context: Context, items: Flow<List<Exercise>>, number: Int) {
+fun WorkingProgramScreen(context: Context, items: Flow<List<Exercise>>, number: String) {
     // Collecter les données de la Flow
     val exercises by items.collectAsState(initial = emptyList())
 
-    Box(
+    Column(
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp)
     ) {
-        // Titre avec flèche et nombre
+        // Section 1 : Titre
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -84,34 +67,55 @@ fun WorkingProgramScreen(context: Context, items: Flow<List<Exercise>>, number: 
             )
             Spacer(modifier = Modifier.width(20.dp)) // Espacement entre le titre et la flèche
             Text(
-                text = "-->   $number",
+                text = "→ $number",
                 fontSize = 24.sp
             )
         }
 
-        // Liste centrée verticalement
-        Column(
+        // Section 2 : Liste des exercices
+        Box(
             modifier = Modifier
+                .weight(1f) // Utilise tout l'espace disponible entre le titre et les boutons
                 .fillMaxWidth()
-                .align(Alignment.Center),
-            horizontalAlignment = Alignment.CenterHorizontally
+                .padding(8.dp)
         ) {
-            exercises.forEach { exercise ->
-                ListItem(
-                    exercise = exercise,
-                    onUpdateClick = {
-                        context.startActivity(Intent(context, UpdateExercice::class.java))
-                    }
+            if (exercises.isEmpty()) {
+                Text(
+                    text = "No exercises available",
+                    fontSize = 18.sp,
+                    modifier = Modifier.align(Alignment.Center),
+                    textAlign = TextAlign.Center
                 )
+            } else {
+                // Remplacer la Column par LazyColumn pour permettre le défilement
+                LazyColumn(
+                    modifier = Modifier.fillMaxSize(),
+                    verticalArrangement = Arrangement.spacedBy(8.dp) // Espacement entre les éléments
+                ) {
+                    items(exercises) { exercise ->
+                        ListItem(
+                            exercise = exercise,
+                            onUpdateClick = {
+                                val intent = Intent(context, UpdateExercice::class.java).apply {
+                                    putExtra("exerciseId", exercise.id)
+                                    putExtra("exerciseName", exercise.name)
+                                    putExtra("exerciseRound", exercise.round)
+                                    putExtra("exerciseTime", exercise.time)
+                                    putExtra("exerciseType", exercise.typeExercise)
+                                }
+                                context.startActivity(intent)
+                            }
+                        )
+                    }
+                }
             }
         }
 
-        // Boutons en bas
+        // Section 3 : Boutons
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .align(Alignment.BottomCenter)
-                .padding(top = 16.dp),
+                .padding(vertical = 16.dp),
             horizontalArrangement = Arrangement.SpaceEvenly,
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -128,6 +132,7 @@ fun WorkingProgramScreen(context: Context, items: Flow<List<Exercise>>, number: 
     }
 }
 
+
 @Composable
 fun ListItem(exercise: Exercise, onUpdateClick: () -> Unit) {
     Column(
@@ -141,19 +146,23 @@ fun ListItem(exercise: Exercise, onUpdateClick: () -> Unit) {
             horizontalArrangement = Arrangement.SpaceBetween,
             modifier = Modifier.fillMaxWidth()
         ) {
-            Column {
+            Column(
+                modifier = Modifier.weight(1f) // Équilibrer l'espace entre le texte et le bouton
+            ) {
                 Text(text = "Name: ${exercise.name}", fontSize = 18.sp)
                 Text(text = "Rounds: ${exercise.round}", fontSize = 14.sp)
                 Text(text = "Time: ${exercise.time}", fontSize = 14.sp)
                 Text(text = "Type: ${exercise.typeExercise}", fontSize = 14.sp)
             }
-            Button(onClick = onUpdateClick) {
+            Button(
+                onClick = onUpdateClick,
+                modifier = Modifier.align(Alignment.CenterVertically)
+            ) {
                 Text(text = "Update")
             }
         }
     }
 }
-
 
 
 
