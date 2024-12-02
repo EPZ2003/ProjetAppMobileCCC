@@ -8,7 +8,9 @@ import androidx.compose.ui.platform.LocalContext
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Button
@@ -34,24 +36,6 @@ import kotlinx.coroutines.flow.Flow
 
 //AppCompatActivity()
 class HomePage : ComponentActivity() {
-    /*override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_homepage)
-
-        val btnGoToWP = findViewById<Button>(R.id.GoToWP)
-        
-
-        btnGoToWP.setOnClickListener {
-
-            val intent = Intent(this,WorkoutPlanning::class.java)
-            startActivity(intent)
-        }
-
-
-
-
-    }*/
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //1er etape initie DB
@@ -71,7 +55,7 @@ class HomePage : ComponentActivity() {
             //HomePageDisplaying(viewModel)
             MessageCard(context = this,viewModel)
             StartNewActictivty(context = this, activityClass = WorkoutPlanning::class.java, text = "Workout Planning")
-
+            GotoLogin(context = this)
 
         }
 
@@ -97,7 +81,26 @@ fun DisplayPopUp (
     }
 }
 
-
+@Composable
+fun GotoLogin (
+    context : Context
+){
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp),
+        contentAlignment = Alignment.BottomStart// Align the button to the bottom-right corner
+    ) {
+        Button(
+            onClick = {
+                val intent = Intent(context, LoginPage::class.java)
+                context.startActivity(intent)
+            },
+        ) {
+            Text(text = "Return to Login Page")
+        }
+    }
+}
 
 
 
