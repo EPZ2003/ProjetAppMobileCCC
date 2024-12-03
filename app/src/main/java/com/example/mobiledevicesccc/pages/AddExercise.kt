@@ -33,14 +33,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.room.Room
-import com.example.mobiledevicesccc.Exercise
 import com.example.mobiledevicesccc.R
 import com.example.mobiledevicesccc.data.ExerciseDatabase
 import com.example.mobiledevicesccc.modelviepackage.ViewModelGetAllData
 import kotlinx.coroutines.flow.Flow
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
-
+import androidx.compose.ui.text.font.FontWeight
 
 
 class AddExercise : ComponentActivity() {
@@ -64,58 +63,50 @@ fun AddExerciseScreen(viewModel: ViewModelGetAllData, context: Context) {
     var time by remember { mutableStateOf("") }
     var type by remember { mutableStateOf("") }
     var errorMessage by remember { mutableStateOf("") }
-    var showDialog by remember { mutableStateOf(false) } // Pour afficher ou cacher le popup
+    var showDialog by remember { mutableStateOf(false) }
 
     Box(modifier = Modifier.fillMaxSize().padding(16.dp)) {
         // Titre en haut de l'écran
         Text(
             text = "Add Exercise",
             fontSize = 24.sp,
+            fontWeight = FontWeight.Bold,
             modifier = Modifier
                 .align(Alignment.TopCenter)
                 .padding(bottom = 16.dp),
             style = MaterialTheme.typography.h5
         )
 
-        // Contenu centré au milieu de l'écran
         Column(
             modifier = Modifier
                 .align(Alignment.Center)
                 .fillMaxWidth()
         ) {
-            // Champ pour le nom
+
             TextField(
                 value = name,
                 onValueChange = { name = it },
                 label = { Text("Exercise Name") },
                 modifier = Modifier.fillMaxWidth()
             )
-
-            // Champ pour les rounds
             TextField(
                 value = round,
                 onValueChange = { round = it },
                 label = { Text("Rounds") },
                 modifier = Modifier.fillMaxWidth()
             )
-
-            // Champ pour le temps
             TextField(
                 value = time,
                 onValueChange = { time = it },
                 label = { Text("Time") },
                 modifier = Modifier.fillMaxWidth()
             )
-
-            // Champ pour le type d'exercice
             TextField(
                 value = type,
                 onValueChange = { type = it },
                 label = { Text("Type") },
                 modifier = Modifier.fillMaxWidth()
             )
-
-            // Afficher le message d'erreur s'il y en a un
             if (errorMessage.isNotEmpty()) {
                 Text(
                     text = errorMessage,
@@ -124,11 +115,8 @@ fun AddExerciseScreen(viewModel: ViewModelGetAllData, context: Context) {
                     modifier = Modifier.padding(top = 8.dp)
                 )
             }
-
-            // Bouton pour ajouter l'exercice
             Button(
                 onClick = {
-                    // Validation des champs
                     when {
                         name.isEmpty() -> errorMessage = "Name is required."
                         round.isEmpty() || round.toIntOrNull() == null -> errorMessage = "Rounds must be a valid number."
@@ -143,14 +131,9 @@ fun AddExerciseScreen(viewModel: ViewModelGetAllData, context: Context) {
                                 time = time,
                                 typeExercise = type
                             )
-
-                            // Insertion de l'exercice dans la base de données
                             viewModel.insertExercise(exercise)
-
-                            // Afficher le popup
                             showDialog = true
 
-                            // Réinitialiser les champs et le message d'erreur
                             name = ""
                             round = ""
                             time = ""
@@ -164,8 +147,6 @@ fun AddExerciseScreen(viewModel: ViewModelGetAllData, context: Context) {
                 Text(text = "Add Exercise")
             }
         }
-
-        // Boutons Home et Retour en bas de l'écran
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -186,8 +167,6 @@ fun AddExerciseScreen(viewModel: ViewModelGetAllData, context: Context) {
             }
         }
     }
-
-    // Popup d'ajout réussi
     if (showDialog) {
         AlertDialog(
             onDismissRequest = { showDialog = false },

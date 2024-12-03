@@ -21,7 +21,7 @@ import com.example.mobiledevicesccc.data.Exercise
 @Composable
 fun HomepageListExercise(viewModelGetAllData: ViewModelGetAllData){
     //5 eme recupere la liste des exercices via le view model creé
-    //On le convertit pour qu'on puuisse l'utiliser
+    //On le convertit pour qu'on puisse l'utiliser
     val exerciseList by viewModelGetAllData.getAllData().collectAsState(initial = emptyList())
     //On check si jamais
     if (exerciseList != null) {
