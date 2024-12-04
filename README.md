@@ -1,5 +1,5 @@
-# Mobile Devices CCC: Workout Planner Application by Team H ( NGADJOU Jeremy PATUREL EMERIC POLIZZI Enzo ) 
-
+# Mobile Devices CCC: Workout Planner Application 
+This is a <span style="color:purple;">Team H ( NGADJOU Jeremy PATUREL EMERIC POLIZZI Enzo ) <span style="color:purple;"></span>
 ## Project Structure
 
 The project is organized into various packages and files to ensure modularity and maintainability. Below is an overview of the structure:
