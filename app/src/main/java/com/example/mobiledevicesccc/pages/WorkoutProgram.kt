@@ -24,22 +24,26 @@ import com.example.mobiledevicesccc.data.ExerciseDatabase
 import com.example.mobiledevicesccc.modelviepackage.ExerciseList
 import com.example.mobiledevicesccc.modelviepackage.ViewModelGetAllData
 import kotlinx.coroutines.flow.Flow
+import androidx.compose.runtime.*
+
+
 
 class WorkoutProgram : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val exerciseIndex = intent.getStringExtra("KeyBtn")
-        val index = exerciseIndex
+        val index = intent.getStringExtra("KeyBtn")
         val db = Room.databaseBuilder(applicationContext, ExerciseDatabase::class.java, "Exercise_database").build()
         val exerciseDao = db.ExerciseDao()
-        val exercise: Flow<List<com.example.mobiledevicesccc.data.Exercise>> = exerciseDao.getAllExercise()
+        val exercise: Flow<List<Exercise>> = exerciseDao.getAllExercise()
         val viewModel = ViewModelGetAllData(exerciseDao)
         setContent {
+
             if (index != null) {
                 WorkingProgramScreen(this,exercise,index)
             }else{
                 WorkingProgramScreen(this,exercise,"1")
             }
+
         }
     }
 }

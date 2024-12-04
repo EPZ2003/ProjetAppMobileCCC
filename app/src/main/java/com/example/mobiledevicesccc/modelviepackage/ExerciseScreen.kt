@@ -42,7 +42,7 @@ fun DisplayExercise(exercise: Exercise, text: String) {
         Row (
             modifier = Modifier
                 .fillMaxWidth() // Make the row fill the available width
-                .background(Color.Magenta)
+                .background(Color.Yellow)
                 .align(Alignment.End),
             horizontalArrangement = Arrangement.Center
         ) {

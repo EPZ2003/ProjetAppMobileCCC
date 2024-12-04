@@ -14,10 +14,12 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -66,20 +68,24 @@ class HomePage : ComponentActivity() {
 
 
 @Composable
-fun DisplayPopUp (
+fun DisplayPopUp(
     context: Context,
     viewModel: ViewModelGetAllData
-){
-    Column() {
+) {
+    Column {
         HomePageDisplaying(viewModel)
 
-        Button(onClick = {
-            context.startActivity(Intent(context, Workout::class.java))
-        }) {
+        Button(
+            onClick = {
+                context.startActivity(Intent(context, Workout::class.java))
+            },
+            colors = ButtonDefaults.buttonColors(Color.Black,Color.White)
+        ) {
             Text(text = "GO !")
         }
     }
 }
+
 
 @Composable
 fun GotoLogin (
@@ -96,6 +102,7 @@ fun GotoLogin (
                 val intent = Intent(context, LoginPage::class.java)
                 context.startActivity(intent)
             },
+            colors = ButtonDefaults.buttonColors(Color(0xFF003366), contentColor = Color.White)
         ) {
             Text(text = "Return to Login Page")
         }

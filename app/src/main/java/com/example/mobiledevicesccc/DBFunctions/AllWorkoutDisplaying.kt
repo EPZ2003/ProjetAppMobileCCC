@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -17,6 +18,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.example.mobiledevicesccc.modelviepackage.ViewModelGetAllData
 import com.example.mobiledevicesccc.pages.DisplayPopUp
@@ -40,7 +42,9 @@ fun AllWorkoutDisplaying(context: Context,viewModel: ViewModelGetAllData){
                     false -> showDialog = true
                 }
 
-            }) {
+            },
+                colors = ButtonDefaults.buttonColors(Color(0xFF003366), contentColor = Color.White)
+            ) {
                 Text("Workout 1")
 
             }
@@ -56,7 +60,9 @@ fun AllWorkoutDisplaying(context: Context,viewModel: ViewModelGetAllData){
                     true -> showDialog = false
                     false -> showDialog = true
                 }
-            }) {
+            },
+                colors = ButtonDefaults.buttonColors(Color(0xFF003366), contentColor = Color.White)
+            ) {
                 Text(text = "Workout 2")
             }
             //Spacebetween Item
@@ -71,7 +77,9 @@ fun AllWorkoutDisplaying(context: Context,viewModel: ViewModelGetAllData){
                     true -> showDialog = false
                     false -> showDialog = true
                 }
-            }) {
+            },
+                colors = ButtonDefaults.buttonColors(Color(0xFF003366), contentColor = Color.White)
+            ) {
                 Text(text = "Workout 3")
             }
 
@@ -88,7 +96,9 @@ fun AllWorkoutDisplaying(context: Context,viewModel: ViewModelGetAllData){
                     true -> showDialog = false
                     false -> showDialog = true
                 }
-            }) {
+            },
+                colors = ButtonDefaults.buttonColors(Color(0xFF003366), contentColor = Color.White)
+            ) {
                 Text(text = "Workout 4")
             }
             //Spacebetween Item
@@ -103,7 +113,9 @@ fun AllWorkoutDisplaying(context: Context,viewModel: ViewModelGetAllData){
                     true -> showDialog = false
                     false -> showDialog = true
                 }
-            }) {
+            },
+                colors = ButtonDefaults.buttonColors(Color(0xFF003366), contentColor = Color.White)
+            ) {
                 Text(text = "Workout 5")
             }
             //Spacebetween Item
@@ -118,7 +130,9 @@ fun AllWorkoutDisplaying(context: Context,viewModel: ViewModelGetAllData){
                     true -> showDialog = false
                     false -> showDialog = true
                 }
-            }) {
+            },
+                colors = ButtonDefaults.buttonColors(Color(0xFF003366), contentColor = Color.White)
+            ) {
                 Text(text = "Workout 6")
             }
 

@@ -312,9 +312,8 @@ fun UpdateExerciseScreen(context: Context, exercise: Exercise, viewModel: ViewMo
             verticalAlignment = Alignment.CenterVertically,
 
         ) {
-            Button(onClick = { val intent = Intent(context, WorkoutProgram::class.java)
-                intent.putExtra("KeyBtn","4")
-                context.startActivity(intent)
+            Button(onClick = { context.startActivity(Intent(context, WorkoutProgram::class.java))
+
                              },
                 colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF003366),contentColor = Color.White)) {
                 Text(text = "Retour")
