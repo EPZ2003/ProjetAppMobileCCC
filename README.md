@@ -1,4 +1,4 @@
-# Mobile Devices CCC: Workout Planner Application
+# Mobile Devices CCC: Workout Planner Application by Team H ( NGADJOU Jeremy PATUREL EMERIC POLIZZI Enzo ) 
 
 ## Project Structure
 
