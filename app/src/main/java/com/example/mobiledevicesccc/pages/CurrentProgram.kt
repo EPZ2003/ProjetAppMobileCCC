@@ -21,11 +21,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.room.Room
 import com.example.mobiledevicesccc.EachPagefunctions.CurrentPageDisplaying
-import com.example.mobiledevicesccc.EachPagefunctions.HomePageDisplaying
+
 import com.example.mobiledevicesccc.data.Exercise
 import com.example.mobiledevicesccc.data.ExerciseDatabase
 import com.example.mobiledevicesccc.modelviepackage.ViewModelGetAllData
-import com.example.mobiledevicesccc.modelviepackage.ViewModelGetId
+
 import kotlinx.coroutines.flow.Flow
 
 class CurrentProgram : ComponentActivity() {

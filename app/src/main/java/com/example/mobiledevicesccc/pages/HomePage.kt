@@ -29,14 +29,14 @@ import androidx.room.Room
 import com.example.mobiledevicesccc.DBFunctions.AllWorkoutDisplaying
 import com.example.mobiledevicesccc.EachPagefunctions.HomePageDisplaying
 
-import com.example.mobiledevicesccc.data.Exercise
+
 import com.example.mobiledevicesccc.data.ExerciseDatabase
 import com.example.mobiledevicesccc.modelviepackage.ViewModelGetAllData
 import com.example.mobiledevicesccc.navButton.StartNewActictivty
-import kotlinx.coroutines.flow.Flow
 
 
-//AppCompatActivity()
+
+
 class HomePage : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
