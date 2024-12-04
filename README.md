@@ -92,5 +92,5 @@ Contains the individual pages of the application. Each page corresponds to a spe
 ### How to Run
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
-   cd <repository-name>
+   git clone git@github.com:EPZ2003/ProjetAppMobileCCC.git
+   cd ProjetAppMobileCCC
