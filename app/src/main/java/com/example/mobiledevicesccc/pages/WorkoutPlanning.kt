@@ -6,12 +6,20 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.room.Room
 import com.example.mobiledevicesccc.R
+
+import com.example.mobiledevicesccc.data.ExerciseDatabase
+import com.example.mobiledevicesccc.modelviepackage.ViewModelGetAllData
+
 
 class WorkoutPlanning : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val db = Room.databaseBuilder(applicationContext, ExerciseDatabase::class.java, "Exercise_database").build()
+        val exerciseDao = db.ExerciseDao()
+        val viewModel = ViewModelGetAllData(exerciseDao)
 
         setContentView(R.layout.activity_workout_planning)
 
@@ -32,7 +40,8 @@ class WorkoutPlanning : AppCompatActivity() {
 
             //Change the value of the Saving to the page WorkoutProgram
 
-            intent.putExtra("KeyBtn","1")
+            viewModel.updateValue("1")
+            intent.putExtra("KeyBtn",viewModel.sharedValue)
             startActivity(intent)
 
         }
@@ -41,13 +50,15 @@ class WorkoutPlanning : AppCompatActivity() {
 
             val txtChoose = findViewById<TextView>(R.id.txtchooseWP)
             //Change the value of the Saving to the page WorkoutProgram
-            intent.putExtra("KeyBtn","2")
+            viewModel.updateValue("2")
+            intent.putExtra("KeyBtn",viewModel.sharedValue)
             startActivity(intent)
         }
         btn3.setOnClickListener {
             val intent = Intent(this, WorkoutProgram::class.java)
             //Change the value of the Saving to the page WorkoutProgram
-            intent.putExtra("KeyBtn","3")
+            viewModel.updateValue("3")
+            intent.putExtra("KeyBtn",viewModel.sharedValue)
             startActivity(intent)
 
 
@@ -55,7 +66,8 @@ class WorkoutPlanning : AppCompatActivity() {
         btn4.setOnClickListener {
             val intent = Intent(this, WorkoutProgram::class.java)
             //Change the value of the Saving to the page WorkoutProgram
-            intent.putExtra("KeyBtn","4")
+            viewModel.updateValue("4")
+            intent.putExtra("KeyBtn",viewModel.sharedValue)
             startActivity(intent)
 
 
@@ -63,7 +75,8 @@ class WorkoutPlanning : AppCompatActivity() {
         btn5.setOnClickListener {
             val intent = Intent(this, WorkoutProgram::class.java)
             //Change the value of the Saving to the page WorkoutProgram
-            intent.putExtra("KeyBtn","5")
+            viewModel.updateValue("5")
+            intent.putExtra("KeyBtn",viewModel.sharedValue)
             startActivity(intent)
 
 
@@ -71,7 +84,8 @@ class WorkoutPlanning : AppCompatActivity() {
         btn6.setOnClickListener {
             val intent = Intent(this, WorkoutProgram::class.java)
             //Change the value of the Saving to the page WorkoutProgram
-            intent.putExtra("KeyBtn","6")
+            viewModel.updateValue("6")
+            intent.putExtra("KeyBtn",viewModel.sharedValue)
             startActivity(intent)
 
 

@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -72,7 +73,7 @@ fun CircularTimer(
     modifier: Modifier = Modifier,
     size: Float = 300f, // Diameter of the circle
     strokeWidth: Float = 10f, // Thickness of the progress stroke
-    primaryColor: Color = Color.Red, // Progress bar color
+    primaryColor: Color = Color.Yellow, // Progress bar color
     backgroundColor: Color = Color.LightGray, // Background circle color
     textColor: Color = Color.Black, // Timer text color
     textSize: TextUnit = 42.sp // Size of the timer text
@@ -133,6 +134,7 @@ fun CircularTimer(
         Button(
             onClick = { isPaused = !isPaused }, // Toggle isPaused state
             modifier = Modifier.padding(16.dp),
+            colors = ButtonDefaults.buttonColors(Color(0xFF003366), contentColor = Color.White)
         ) {
             Text(
                 fontSize = 42.sp,

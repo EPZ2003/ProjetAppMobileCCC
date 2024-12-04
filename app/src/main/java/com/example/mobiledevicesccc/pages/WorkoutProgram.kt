@@ -13,6 +13,8 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -22,22 +24,26 @@ import com.example.mobiledevicesccc.data.ExerciseDatabase
 import com.example.mobiledevicesccc.modelviepackage.ExerciseList
 import com.example.mobiledevicesccc.modelviepackage.ViewModelGetAllData
 import kotlinx.coroutines.flow.Flow
+import androidx.compose.runtime.*
+
+
 
 class WorkoutProgram : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val exerciseIndex = intent.getStringExtra("KeyBtn")
-        val index = exerciseIndex
+        val index = intent.getStringExtra("KeyBtn")
         val db = Room.databaseBuilder(applicationContext, ExerciseDatabase::class.java, "Exercise_database").build()
         val exerciseDao = db.ExerciseDao()
-        val exercise: Flow<List<com.example.mobiledevicesccc.data.Exercise>> = exerciseDao.getAllExercise()
+        val exercise: Flow<List<Exercise>> = exerciseDao.getAllExercise()
         val viewModel = ViewModelGetAllData(exerciseDao)
         setContent {
+
             if (index != null) {
                 WorkingProgramScreen(this,exercise,index)
             }else{
                 WorkingProgramScreen(this,exercise,"1")
             }
+
         }
     }
 }
@@ -62,7 +68,8 @@ fun WorkingProgramScreen(context: Context, items: Flow<List<Exercise>>, number: 
         ) {
             Text(
                 text = "WorkingProgram",
-                fontSize = 24.sp,
+                fontSize = 34.sp,
+                fontWeight = FontWeight.Bold,
                 textAlign = TextAlign.Center
             )
             Spacer(modifier = Modifier.width(20.dp)) // Espacement entre le titre et la flèche
@@ -118,15 +125,22 @@ fun WorkingProgramScreen(context: Context, items: Flow<List<Exercise>>, number: 
                 .padding(vertical = 16.dp),
             horizontalArrangement = Arrangement.SpaceEvenly,
             verticalAlignment = Alignment.CenterVertically
+
         ) {
-            Button(onClick = { context.startActivity(Intent(context, AddExercise::class.java)) }) {
+            Button(onClick = { context.startActivity(Intent(context, AddExercise::class.java)) },
+                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF003366), contentColor = Color.White)  // Couleur du texte
+                ) {
                 Text(text = "Add")
             }
-            Button(onClick = { context.startActivity(Intent(context, HomePage::class.java)) }) {
+            Button(onClick = { context.startActivity(Intent(context, HomePage::class.java)) },
+                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF003366),contentColor = Color.White)
+                ) {
                 Text(text = "Home")
             }
-            Button(onClick = { context.startActivity(Intent(context, WorkoutPlanning::class.java)) }) {
-                Text(text = "Retour")
+            Button(onClick = { context.startActivity(Intent(context, WorkoutPlanning::class.java)) },
+                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF003366), contentColor = Color.White)
+            ) {
+                Text(text = "Back")
             }
         }
     }
@@ -156,135 +170,11 @@ fun ListItem(exercise: Exercise, onUpdateClick: () -> Unit) {
             }
             Button(
                 onClick = onUpdateClick,
-                modifier = Modifier.align(Alignment.CenterVertically)
+                modifier = Modifier.align(Alignment.CenterVertically),
+                colors = ButtonDefaults.buttonColors(containerColor = Color.Black, contentColor = Color.White),
             ) {
                 Text(text = "Update")
             }
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-////        if (savedInstanceState != null) {
-        ////            super.onSaveInstanceState(savedInstanceState)
-        ////            super.onRestoreInstanceState(savedInstanceState)
-        ////        }
-        //
-        //        setContentView(R.layout.activity_workout_program)
-        //
-        //
-        //
-        //        // Données à afficher
-        //        val exercises = mutableListOf(
-        //            Exercise(1, "Push-ups", 3, 30),
-        //            Exercise(2, "Squats", 4, 20),
-        //            Exercise(3, "Burpees", 5, 15),
-        //            Exercise(4, "traction", 5, 15)
-        //        )
-        //        val recyclerView = findViewById<RecyclerView>(R.id.myRecyclerView)
-        //        val adapter = ExerciseAdapter(exercises) { selectedExercise ->
-        //
-        //            // Gestion du clic sur le bouton Update
-        //            val intent = Intent(this, UpdateExercice::class.java)
-        //            intent.putExtra("EXERCISE_ID", selectedExercise.id)
-        //            intent.putExtra("EXERCISE_NAME", selectedExercise.name)
-        //            intent.putExtra("EXERCISE_ROUNDS", selectedExercise.round)
-        //            intent.putExtra("EXERCISE_REST_TIME", selectedExercise.restTime)
-        //            startActivity(intent)
-        //        }
-        //
-        //
-        //        recyclerView.layoutManager = LinearLayoutManager(this)
-        //        recyclerView.adapter = adapter
-        //
-        //        // Configuration glisser/deposer
-        //        val itemTouchHelperCallback = object : ItemTouchHelper.SimpleCallback(
-        //            ItemTouchHelper.UP or ItemTouchHelper.DOWN, 0
-        //        ) {
-        //            override fun onMove(
-        //                recyclerView: RecyclerView,
-        //                viewHolder: RecyclerView.ViewHolder,
-        //                target: RecyclerView.ViewHolder
-        //            ): Boolean {
-        //                val fromPosition = viewHolder.adapterPosition
-        //                val toPosition = target.adapterPosition
-        //                adapter.swapItems(fromPosition, toPosition)
-        //                return true
-        //            }
-        //
-        //            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {}
-        //        }
-        //        val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallback)
-        //        itemTouchHelper.attachToRecyclerView(recyclerView)
-        //
-        //        //Change the value of txtchooseWP by the passing button
-        //        val txtChooseWP = findViewById<TextView>(R.id.txtchooseWP)
-        //        val receiverTxt = intent.getStringExtra("KeyBtn")
-        //        txtChooseWP.text = receiverTxt
-        //
-        //        //Button
-        //        val btnADD = findViewById<Button>(R.id.btnADD)
-        //        val btnWPHP = findViewById<Button>(R.id.btnWPHP)
-        //        val btnWPWP = findViewById<Button>(R.id.btnWPWP)
-        //
-        //        btnADD.setOnClickListener {
-        //
-        //            val intent = Intent(this,AddExercise::class.java)
-        //            intent.putExtra("KeyBtnToADD",receiverTxt)
-        //            startActivity(intent)
-        //
-        //        }
-        //        btnWPHP.setOnClickListener {
-        //            val intent = Intent(this, HomePage::class.java)
-        //            startActivity(intent)
-        //        }
-        //        btnWPWP.setOnClickListener {
-        //            val intent = Intent(this, WorkoutPlanning::class.java)
-        //            startActivity(intent)
-        //        }
-        //
-        //    }
-        //// garde en memoire
-        ////    override fun onSaveInstanceState(outState: Bundle) {
-        ////        super.onSaveInstanceState(outState)
-        ////
-        ////        // Sauvegarder la position de défilement actuelle
-        ////        val layoutManager = recyclerView.layoutManager as LinearLayoutManager
-        ////        val scrollPosition = layoutManager.findFirstVisibleItemPosition()
-        ////        outState.putInt("scroll_position", scrollPosition)
-        ////    }
-        ////
-        ////    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
-        ////        super.onRestoreInstanceState(savedInstanceState)
-        ////
-        ////        // Restaurer la position de défilement
-        ////        val savedScrollPosition = savedInstanceState.getInt("scroll_position", 0)
-        ////        recyclerView.scrollToPosition(savedScrollPosition)
-        ////    }
-        //
-        //}
-

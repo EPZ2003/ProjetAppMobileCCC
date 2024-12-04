@@ -8,14 +8,18 @@ import androidx.compose.ui.platform.LocalContext
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -34,24 +38,6 @@ import kotlinx.coroutines.flow.Flow
 
 //AppCompatActivity()
 class HomePage : ComponentActivity() {
-    /*override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_homepage)
-
-        val btnGoToWP = findViewById<Button>(R.id.GoToWP)
-        
-
-        btnGoToWP.setOnClickListener {
-
-            val intent = Intent(this,WorkoutPlanning::class.java)
-            startActivity(intent)
-        }
-
-
-
-
-    }*/
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //1er etape initie DB
@@ -71,7 +57,7 @@ class HomePage : ComponentActivity() {
             //HomePageDisplaying(viewModel)
             MessageCard(context = this,viewModel)
             StartNewActictivty(context = this, activityClass = WorkoutPlanning::class.java, text = "Workout Planning")
-
+            GotoLogin(context = this)
 
         }
 
@@ -82,22 +68,46 @@ class HomePage : ComponentActivity() {
 
 
 @Composable
-fun DisplayPopUp (
+fun DisplayPopUp(
     context: Context,
     viewModel: ViewModelGetAllData
-){
-    Column() {
+) {
+    Column {
         HomePageDisplaying(viewModel)
 
-        Button(onClick = {
-            context.startActivity(Intent(context, Workout::class.java))
-        }) {
+        Button(
+            onClick = {
+                context.startActivity(Intent(context, Workout::class.java))
+            },
+            colors = ButtonDefaults.buttonColors(Color.Black,Color.White)
+        ) {
             Text(text = "GO !")
         }
     }
 }
 
 
+@Composable
+fun GotoLogin (
+    context : Context
+){
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp),
+        contentAlignment = Alignment.BottomStart// Align the button to the bottom-right corner
+    ) {
+        Button(
+            onClick = {
+                val intent = Intent(context, LoginPage::class.java)
+                context.startActivity(intent)
+            },
+            colors = ButtonDefaults.buttonColors(Color(0xFF003366), contentColor = Color.White)
+        ) {
+            Text(text = "Return to Login Page")
+        }
+    }
+}
 
 
 
@@ -138,7 +148,7 @@ fun MessageCard(context : Context,viewModel: ViewModelGetAllData) {
 @Composable
 fun PreviewMessageCard() {
     val context = LocalContext.current
-
+//Juste pour voir si ça marche
     //MessageCard(context)
 
 }

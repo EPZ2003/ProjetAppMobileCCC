@@ -61,103 +61,7 @@ class TrackingWorkout {
     }
 }
 
-/*
-@Composable
-fun displayWorkout(context: Context){
-    var status = ""
-    val backgroundColors = listOf(
-        Color.Gray,
-        Color(0xFFFFA500), // Orange
-        Color.Gray
-    )
-    val stringList = listOf(
-        "Workout Planning",
-        "Yoga Session",
-        "Cardio Exercise",
-        "Strength Training",
-        "Flexibility Training",
-        "Meditation",
-        "Pilates",
-        "CrossFit",
-        "Cycling",
-        "Swimming"
-    )
 
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Title()
-        if (TrackingWorkout.tracking > stringList.size){
-            TrackingWorkout.tracking = TrackingWorkout.begin
-        }
-        for (i in 0 .. 2){
-            when(i){
-                0 -> status = "Passed"
-                1 -> status = "1:32 m"//devoir prendre le time en compte
-                2 -> status = "Coming after"
-            }
-            Column (
-                modifier = Modifier
-                    .fillMaxWidth()
-
-                    .padding(16.dp)
-            ) {
-                Row (
-                    modifier = Modifier
-                        .fillMaxWidth() // Make the row fill the available width
-                        .background(backgroundColors[i])
-                ) {
-                    Text(
-                        text = stringList[i+ TrackingWorkout.tracking],
-                        fontSize = 46.sp
-                    )
-                }
-                Row(
-                    modifier = Modifier
-                        .align(Alignment.End)
-                ) {
-                    Text(
-                        text = status,
-                        modifier = Modifier
-                            // Align this element to the right
-                            .background(color = Color.Cyan )
-                    )
-
-                }
-                Row {
-                    Text(
-                        text = "",
-                        modifier = Modifier
-                            // Align this element to the right
-
-                            .padding(34.dp)
-
-                    )
-
-                }
-            }
-
-        }
-        DisplayBtn(context)
-        StartNewActictivty(context, activityClass = RestTime::class.java)
-
-    }
-
-}*/
-/*
-@Composable
-fun AllDisplaying (exerciseFlow: Flow<List<Exercise>>, context: Context){
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier
-        .padding(bottom = 42.dp)
-    ) {
-        Title()
-        CreateList(exerciseFlow = exerciseFlow)
-    }
-    GoToPause(context = context, activityClass = RestTime::class.java)
-    StartNewActictivty(context, activityClass = RestTime::class.java)
-}*/
 @Composable
 fun Title (){
         Text(
@@ -168,12 +72,6 @@ fun Title (){
         )
 }
 
-/*
-@Composable
-fun WorkoutPage (context: Context){
-
-    displayWorkout(context)
-}*/
 @Composable
 fun DisplayBtn(context: Context) {
     Column(

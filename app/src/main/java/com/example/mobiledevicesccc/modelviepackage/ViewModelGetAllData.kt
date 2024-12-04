@@ -1,5 +1,8 @@
 package com.example.mobiledevicesccc.modelviepackage
 
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mobiledevicesccc.data.Exercise
@@ -9,6 +12,15 @@ import kotlinx.coroutines.launch
 
 //3.5 tu cree le view model PAR QUERIES DAO
 class ViewModelGetAllData(private val exerciseDao: ExerciseDao) : ViewModel() {
+
+    var sharedValue by mutableStateOf("") // Stocke la valeur partagée
+        private set
+
+    fun updateValue(newValue: String) {
+        sharedValue = newValue
+    }
+
+
     fun getAllData(): Flow<List<Exercise>> {
         return exerciseDao.getAllExercise()
     }

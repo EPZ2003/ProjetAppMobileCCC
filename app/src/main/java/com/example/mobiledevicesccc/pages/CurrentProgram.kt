@@ -64,11 +64,6 @@ class CurrentProgram : ComponentActivity() {
 
     @Composable
     fun CurrentProgramScreen(onBackClick: () -> Unit,viewModel: ViewModelGetAllData) {
-        // Données fictives
-        val listName = listOf("Exercice 1", "Exercice 2", "Exercice 3")
-        val listRounds = listOf("5", "6", "2")
-        val listMinuteRest = listOf("1", "0", "4")
-        val listSecondRest = listOf("30", "20", "00")
 
         // Conteneur principal
         Column(
@@ -85,20 +80,6 @@ class CurrentProgram : ComponentActivity() {
                 modifier = Modifier.padding(bottom = 16.dp)
             )
 
-            /*// Itération pour chaque exercice
-            listName.forEachIndexed { index, name ->
-                val rounds = listRounds[index]
-                val minutes = listMinuteRest[index]
-                val seconds = listSecondRest[index]
-
-                // Affichage d'un exercice
-                ExerciseItem(
-                    name = name,
-                    rounds = rounds,
-                    minutes = minutes,
-                    seconds = seconds
-                )
-            }*/
             CurrentPageDisplaying(viewModel)
         }
 

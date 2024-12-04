@@ -39,26 +39,34 @@ import com.example.mobiledevicesccc.data.ExerciseDatabase
 import com.example.mobiledevicesccc.modelviepackage.ViewModelGetAllData
 import kotlinx.coroutines.flow.Flow
 import androidx.compose.material3.*
-
-
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 
 
 class AddExercise : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val exerciseIndex = intent.getStringExtra("KeyBtn")
         val db = Room.databaseBuilder(applicationContext, ExerciseDatabase::class.java, "Exercise_database").build()
         val exerciseDao = db.ExerciseDao()
         val exercise: Flow<List<com.example.mobiledevicesccc.data.Exercise>> =
             exerciseDao.getAllExercise()
         val viewModel = ViewModelGetAllData(exerciseDao)
-        setContent { AddExerciseScreen(viewModel,this) }
+        setContent {
+            if (exerciseIndex != null) {
+                AddExerciseScreen(viewModel,this,exerciseIndex)
+            }else
+            {
+                AddExerciseScreen(viewModel,this,"1")
+            }
+        }
     }
 }
 
 
 
 @Composable
-fun AddExerciseScreen(viewModel: ViewModelGetAllData, context: Context) {
+fun AddExerciseScreen(viewModel: ViewModelGetAllData, context: Context,index : String) {
     var name by remember { mutableStateOf("") }
     var round by remember { mutableStateOf("") }
     var time by remember { mutableStateOf("") }
@@ -70,7 +78,8 @@ fun AddExerciseScreen(viewModel: ViewModelGetAllData, context: Context) {
         // Titre en haut de l'écran
         Text(
             text = "Add Exercise",
-            fontSize = 24.sp,
+            fontSize = 34.sp,
+            fontWeight = FontWeight.Bold,
             modifier = Modifier
                 .align(Alignment.TopCenter)
                 .padding(bottom = 16.dp),
@@ -159,7 +168,8 @@ fun AddExerciseScreen(viewModel: ViewModelGetAllData, context: Context) {
                         }
                     }
                 },
-                modifier = Modifier.padding(top = 16.dp).fillMaxWidth()
+                modifier = Modifier.padding(top = 16.dp).fillMaxWidth(),
+                colors = ButtonDefaults.buttonColors(containerColor = Color.Yellow,contentColor = Color.White)
             ) {
                 Text(text = "Add Exercise")
             }
@@ -175,13 +185,18 @@ fun AddExerciseScreen(viewModel: ViewModelGetAllData, context: Context) {
         ) {
             Button(onClick = {
                 context.startActivity(Intent(context, HomePage::class.java))
-            }) {
+            },
+                colors = androidx.compose.material.ButtonDefaults.buttonColors(Color(0xFF003366), contentColor = Color.White)
+            ) {
                 Text(text = "Home")
             }
 
-            Button(onClick = {
-                context.startActivity(Intent(context, WorkoutProgram::class.java))
-            }) {
+            Button(onClick = { val intent = Intent(context, WorkoutProgram::class.java)
+                intent.putExtra("KeyBtn",index)
+                context.startActivity(intent)
+            },
+                colors = androidx.compose.material.ButtonDefaults.buttonColors(Color(0xFF003366), contentColor = Color.White)
+            ) {
                 Text(text = "Retour")
             }
         }
@@ -206,79 +221,3 @@ fun AddExerciseScreen(viewModel: ViewModelGetAllData, context: Context) {
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//        setContentView(R.layout.activity_add_exercise)
-    //
-    //        val txtChoose = findViewById<TextView>(R.id.txtChoose)
-    //        val receiverTxt = intent.getStringExtra("KeyBtnToADD")
-    //        txtChoose.text = receiverTxt
-    //
-    //
-    //        val btnRoudInput = findViewById<Button>(R.id.btnRoudInput)
-    //        val btnRTI = findViewById<Button>(R.id.btnRTI)
-    //        val btnBack = findViewById<Button>(R.id.btnBack)
-    //        val btnAEHP = findViewById<Button>(R.id.btnAEHP)
-    //        val btnAEWP = findViewById<Button>(R.id.btnAEWP)
-    //        val btnadd = findViewById<Button>(R.id.btnADD)
-    //        val exospinner = findViewById<Spinner>(R.id.exospinner)
-    //        val repspinner = findViewById<Spinner>(R.id.repspinner)
-    //
-    //        // Liste des attributs pour le Spinner d'exo
-    //        val exercice = listOf("Select exo","squat", "Push-ups", "Burpees", "traction", "dips")
-    //        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, exercice)
-    //        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-    //        exospinner.adapter = adapter
-    //
-    //        // Liste des attributs pour le Spinner de rep
-    //        val rep = listOf("Select nb rép","1","2","3","4","5","6","7","8","9","10")
-    //        val adapters = ArrayAdapter(this, android.R.layout.simple_spinner_item, rep)
-    //        adapters.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-    //        repspinner.adapter = adapters
-    //
-    ////        btnRoudInput.setOnClickListener {
-    ////            val intent = Intent(this,RoundInput::class.java)
-    ////            startActivity(intent)
-    ////        }
-    ////
-    ////        btnRTI.setOnClickListener {
-    ////            val intent = Intent(this,RestTimeInput::class.java)
-    ////            startActivity(intent)
-    ////        }
-    //
-    //        btnBack.setOnClickListener {
-    //            val intent = Intent(this, WorkoutProgram::class.java)
-    //            intent.putExtra("KeyBtn",receiverTxt)
-    //            startActivity(intent)
-    //        }
-    //
-    ////        btnAEHP.setOnClickListener {
-    ////            val intent = Intent(this,HomePage::class.java)
-    ////            startActivity(intent)
-    ////        }
-    ////
-    ////        btnAEWP.setOnClickListener {
-    ////            val intent = Intent(this,WorkoutPlanning::class.java)
-    ////            startActivity(intent)
-    ////        }
-    //    }
-    //}

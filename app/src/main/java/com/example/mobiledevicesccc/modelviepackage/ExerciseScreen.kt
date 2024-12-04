@@ -10,7 +10,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
+
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -42,7 +42,7 @@ fun DisplayExercise(exercise: Exercise, text: String) {
         Row (
             modifier = Modifier
                 .fillMaxWidth() // Make the row fill the available width
-                .background(Color.Magenta)
+                .background(Color.Yellow)
                 .align(Alignment.End),
             horizontalArrangement = Arrangement.Center
         ) {
