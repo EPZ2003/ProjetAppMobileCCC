@@ -127,6 +127,8 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -188,8 +190,9 @@ fun UpdateExerciseScreen(context: Context, exercise: Exercise, viewModel: ViewMo
         // Titre
         Text(
             text = "Update Exercise",
-            fontSize = 24.sp,
+            fontSize = 34.sp,
             textAlign = TextAlign.Center,
+            fontWeight = FontWeight.Bold,
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(bottom = 32.dp)
@@ -203,9 +206,13 @@ fun UpdateExerciseScreen(context: Context, exercise: Exercise, viewModel: ViewMo
             horizontalAlignment = Alignment.Start
         ) {
             Text(text = "Name: ${exercise.name}", fontSize = 18.sp)
+            Spacer(modifier = Modifier.height(16.dp))
             Text(text = "Rounds: ${exercise.round}", fontSize = 18.sp)
+            Spacer(modifier = Modifier.height(16.dp))
             Text(text = "Time: ${exercise.time}", fontSize = 18.sp)
+            Spacer(modifier = Modifier.height(16.dp))
             Text(text = "Type: ${exercise.typeExercise}", fontSize = 18.sp)
+            Spacer(modifier = Modifier.height(16.dp))
         }
 
         // Dropdown (Spinner) pour choisir ce qu'on modifie
@@ -277,22 +284,24 @@ fun UpdateExerciseScreen(context: Context, exercise: Exercise, viewModel: ViewMo
                         context.startActivity(Intent(context, WorkoutPlanning::class.java))
                     }
                 },
-                modifier = Modifier.padding(top = 16.dp)
+                modifier = Modifier.padding(top = 16.dp).fillMaxWidth(),
+                colors = ButtonDefaults.buttonColors(containerColor = Color.Black,contentColor = Color.White)
             ) {
                 Text(text = "Submit")
             }
-            // Bouton Supprimer
-            Spacer(modifier = Modifier.height(16.dp))
-            Button(
-                onClick = {
-                    // Appeler la fonction de suppression
-                    viewModel.deleteExercise(exercise)
-                    context.startActivity(Intent(context, WorkoutPlanning::class.java))
-                },
-                modifier = Modifier.padding(top = 16.dp)
-            ) {
-                Text(text = "Delete")
-            }
+        }
+        // Bouton Supprimer
+        Spacer(modifier = Modifier.height(96.dp))
+        Button(
+            onClick = {
+                // Appeler la fonction de suppression
+                viewModel.deleteExercise(exercise)
+                context.startActivity(Intent(context, WorkoutPlanning::class.java))
+            },
+            modifier = Modifier.padding(top = 16.dp).fillMaxWidth(),
+            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFDC143C),contentColor = Color.White)
+        ) {
+            Text(text = "Delete")
         }
 
         // Boutons Retour et Home en bas
@@ -300,15 +309,19 @@ fun UpdateExerciseScreen(context: Context, exercise: Exercise, viewModel: ViewMo
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceEvenly,
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically,
+
         ) {
             Button(onClick = { val intent = Intent(context, WorkoutProgram::class.java)
                 intent.putExtra("KeyBtn","4")
                 context.startActivity(intent)
-            }) {
+                             },
+                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF003366),contentColor = Color.White)) {
                 Text(text = "Retour")
             }
-            Button(onClick = { context.startActivity(Intent(context, HomePage::class.java)) }) {
+            Button(onClick = { context.startActivity(Intent(context, HomePage::class.java)) },
+                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF003366),contentColor = Color.White)
+            ) {
                 Text(text = "Home")
             }
         }
@@ -322,7 +335,8 @@ fun DropdownMenu(selectedOption: String?, onOptionSelected: (String) -> Unit) {
     val options = listOf("Round", "Time")
 
     Box {
-        Button(onClick = { expanded = true }) {
+        Button(onClick = { expanded = true },
+            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF003366),contentColor = Color.White)) {
             Text(text = selectedOption ?: "Select option")
         }
         DropdownMenu(

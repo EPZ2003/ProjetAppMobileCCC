@@ -13,6 +13,8 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -62,7 +64,8 @@ fun WorkingProgramScreen(context: Context, items: Flow<List<Exercise>>, number: 
         ) {
             Text(
                 text = "WorkingProgram",
-                fontSize = 24.sp,
+                fontSize = 34.sp,
+                fontWeight = FontWeight.Bold,
                 textAlign = TextAlign.Center
             )
             Spacer(modifier = Modifier.width(20.dp)) // Espacement entre le titre et la flèche
@@ -118,15 +121,22 @@ fun WorkingProgramScreen(context: Context, items: Flow<List<Exercise>>, number: 
                 .padding(vertical = 16.dp),
             horizontalArrangement = Arrangement.SpaceEvenly,
             verticalAlignment = Alignment.CenterVertically
+
         ) {
-            Button(onClick = { context.startActivity(Intent(context, AddExercise::class.java)) }) {
+            Button(onClick = { context.startActivity(Intent(context, AddExercise::class.java)) },
+                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF003366), contentColor = Color.White)  // Couleur du texte
+                ) {
                 Text(text = "Add")
             }
-            Button(onClick = { context.startActivity(Intent(context, HomePage::class.java)) }) {
+            Button(onClick = { context.startActivity(Intent(context, HomePage::class.java)) },
+                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF003366),contentColor = Color.White)
+                ) {
                 Text(text = "Home")
             }
-            Button(onClick = { context.startActivity(Intent(context, WorkoutPlanning::class.java)) }) {
-                Text(text = "Retour")
+            Button(onClick = { context.startActivity(Intent(context, WorkoutPlanning::class.java)) },
+                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF003366), contentColor = Color.White)
+            ) {
+                Text(text = "Back")
             }
         }
     }
@@ -156,7 +166,8 @@ fun ListItem(exercise: Exercise, onUpdateClick: () -> Unit) {
             }
             Button(
                 onClick = onUpdateClick,
-                modifier = Modifier.align(Alignment.CenterVertically)
+                modifier = Modifier.align(Alignment.CenterVertically),
+                colors = ButtonDefaults.buttonColors(containerColor = Color.Black, contentColor = Color.White),
             ) {
                 Text(text = "Update")
             }
