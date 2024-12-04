@@ -70,7 +70,7 @@ fun AllWorkoutDisplaying(context: Context,viewModel: ViewModelGetAllData){
                 modifier = Modifier
                     .width(30.dp) // Spacer width
                     .height(20.dp) // Same height as your row items
-                //.background(Color.Red) // Visualize the space
+
             )
             Button(onClick = {
                 when(showDialog){

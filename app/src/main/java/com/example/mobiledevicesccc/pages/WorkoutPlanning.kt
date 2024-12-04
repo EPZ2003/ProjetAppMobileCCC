@@ -8,10 +8,10 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.room.Room
 import com.example.mobiledevicesccc.R
-import com.example.mobiledevicesccc.data.Exercise
+
 import com.example.mobiledevicesccc.data.ExerciseDatabase
 import com.example.mobiledevicesccc.modelviepackage.ViewModelGetAllData
-import kotlinx.coroutines.flow.Flow
+
 
 class WorkoutPlanning : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
