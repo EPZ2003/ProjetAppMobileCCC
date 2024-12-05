@@ -1,5 +1,5 @@
 # Mobile Devices CCC: Workout Planner Application 
-Team H : NGADJOU Jeremy PATUREL EMERIC POLIZZI Enzo 
+Team H : NGADJOU Jeremy PATUREL EMERIC POLIZZI Enzo SYED Tashfin 
 ## Project Structure
 
 The project is organized into various packages and files to ensure modularity and maintainability. Below is an overview of the structure:
