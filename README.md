@@ -94,3 +94,12 @@ Contains the individual pages of the application. Each page corresponds to a spe
    ```bash
    git clone git@github.com:EPZ2003/ProjetAppMobileCCC.git
    cd ProjetAppMobileCCC
+### Data to insert into the table Exercice_table : 
+   ```bash
+INSERT INTO exercise (name, round, time, typeExercise) VALUES
+('Squats', 1, '45', 'legs'),
+('Lunges', 1, '56', 'legs'),
+('Plank', 2, '65', 'abs'),
+('Crunches', 2, '45', 'abs'),
+('Push-Ups', 3, '76', 'push'),
+('Bench Press', 3, '43', 'push')
